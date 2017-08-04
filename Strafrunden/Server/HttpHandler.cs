@@ -11,24 +11,25 @@ namespace Strafrunden.Server
 {
     class HttpHandler
     {
-        public void GetContextCallback(IAsyncResult ar)
+        Net.HttpListener
+        public void Run()
         {
-            if (ar == null)
-                return;
-            Net.HttpListener listener = ar.AsyncState as Net.HttpListener;
-            Net.HttpListenerContext context = listener.EndGetContext(ar);
-
-            if (context.Request.HttpMethod == "GET" && context.Request.Url.LocalPath =="/strafrunden")
+            while (true)
             {
-                context.Response.StatusCode = 200;
-                string htmlTemplate = "<html><body>OK</body></html>";
-                byte[] buf = new byte[htmlTemplate.Length];
+                Net.HttpListenerContext context = listener.EndGetContext(ar);
 
-                for(int i = 0; i < htmlTemplate.Length; i++)
+                if (context.Request.HttpMethod == "GET" && context.Request.Url.LocalPath == "/strafrunden")
                 {
-                    buf[i] = System.Convert.ToByte(htmlTemplate[i]);
+                    context.Response.StatusCode = 200;
+                    string htmlTemplate = "<html><body>OK</body></html>";
+                    byte[] buf = new byte[htmlTemplate.Length];
+
+                    for (int i = 0; i < htmlTemplate.Length; i++)
+                    {
+                        buf[i] = System.Convert.ToByte(htmlTemplate[i]);
+                    }
+                    context.Response.OutputStream.Write(buf, 0, buf.Length);
                 }
-                context.Response.OutputStream.Write(buf, 0, buf.Length);
             }
         }
     }

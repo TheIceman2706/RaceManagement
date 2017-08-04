@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Net;
 using System.Net.Http;
 
@@ -13,6 +13,7 @@ namespace Strafrunden.Server
 
         private HttpListener _baseServer;
         private HttpHandler _handler;
+        private System.Threading.Thread _responderThread;
         public HttpListener BaseServer { get => _baseServer; }
 
         public HttpServer()
@@ -24,18 +25,20 @@ namespace Strafrunden.Server
 
             _baseServer.Prefixes.Add("http://+:80/strafrunden/");
 
+            _responderThread = new Thread(new ThreadStart(_handler.Run));
             
         }
 
         public void Start() //TODO: make pulling context into loop (!)
         {
             _baseServer.Start();
-            _baseServer.BeginGetContext(_handler.GetContextCallback,_baseServer);
+            _responderThread.Start();
         }
 
         public void Stop()
         {
             _baseServer.Stop();
+            _responderThread.Abort();
         }
     }
 }
