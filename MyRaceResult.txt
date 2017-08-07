@@ -1,0 +1,1 @@
+Create custom column in results, update row custom1 VALUES (Sum(Strafrunden)) WHERE Startnummer = nr;
