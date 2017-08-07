@@ -1,0 +1,14 @@
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden TouchClient\bin\Debug\Strafrunden TouchClient.exe.config
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden TouchClient\bin\Debug\Strafrunden TouchClient.exe
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden TouchClient\bin\Debug\Strafrunden TouchClient.pdb
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden TouchClient\obj\Debug\Strafrunden TouchClient.csprojResolveAssemblyReference.cache
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden TouchClient\obj\Debug\MainWindow.g.cs
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden TouchClient\obj\Debug\App.g.cs
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden TouchClient\obj\Debug\Strafrunden TouchClient_MarkupCompile.cache
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden TouchClient\obj\Debug\Strafrunden TouchClient_MarkupCompile.lref
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden TouchClient\obj\Debug\MainWindow.baml
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden TouchClient\obj\Debug\Strafrunden TouchClient.g.resources
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden TouchClient\obj\Debug\Strafrunden_TouchClient.Properties.Resources.resources
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden TouchClient\obj\Debug\Strafrunden TouchClient.csproj.GenerateResource.Cache
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden TouchClient\obj\Debug\Strafrunden TouchClient.exe
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden TouchClient\obj\Debug\Strafrunden TouchClient.pdb
