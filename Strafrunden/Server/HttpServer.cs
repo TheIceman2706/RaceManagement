@@ -12,33 +12,38 @@ namespace Strafrunden.Server
     {
 
         private HttpListener _baseServer;
-        private HttpHandler _handler;
+        public HttpHandler Handler { get; internal set; }
         private System.Threading.Thread _responderThread;
         public HttpListener BaseServer { get => _baseServer; }
 
+        public bool Running { get; internal set; }
+
         public HttpServer()
         {
-            _handler = new HttpHandler();
             _baseServer = new System.Net.HttpListener();
+
+            Handler = new HttpHandler(_baseServer, this);
+            _responderThread = new Thread(new ThreadStart(Handler.Run));
+
 
             _baseServer.AuthenticationSchemes = AuthenticationSchemes.Anonymous;
 
-            _baseServer.Prefixes.Add("http://+:80/strafrunden/");
-
-            _responderThread = new Thread(new ThreadStart(_handler.Run));
-            
+            _baseServer.Prefixes.Add("http://*:80/strafrunden/");
+            _baseServer.Prefixes.Add("http://*:8080/strafrunden/");
         }
 
         public void Start() //TODO: make pulling context into loop (!)
         {
             _baseServer.Start();
+            Running = true;
             _responderThread.Start();
         }
 
         public void Stop()
         {
             _baseServer.Stop();
-            _responderThread.Abort();
+            Running = false;
+            //_responderThread.Abort();
         }
     }
 }

@@ -1,7 +1,6 @@
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\bin\Debug\Strafrunden.exe.config
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\bin\Debug\Strafrunden.exe
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\bin\Debug\Strafrunden.pdb
-C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\Strafrunden.csprojResolveAssemblyReference.cache
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\MainWindow.g.cs
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\App.g.cs
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\Strafrunden_MarkupCompile.cache
@@ -12,3 +11,6 @@ C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\Str
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\Strafrunden.csproj.GenerateResource.Cache
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\Strafrunden.exe
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\Strafrunden.pdb
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\Strafrunden_Content.g.cs
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\bin\Debug\strafrunden.css
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\Strafrunden.csprojResolveAssemblyReference.cache

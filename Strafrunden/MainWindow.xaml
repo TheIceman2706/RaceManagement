@@ -5,8 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Strafrunden"
         mc:Ignorable="d"
-        Title="Strafrunden" Height="364.644" Width="493.515" Closing="Window_Closing">
+        Title="Strafrunden" Height="364.644" Width="493.515" Closing="Window_Closing" Loaded="Window_Loaded">
     <Grid>
+        <DataGrid Margin="0,18,0,0" Name="DataOutput" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Startnummer" Binding="{Binding [0]}"/>
+                <DataGridTextColumn Header="Fehlwürfe" Binding="{Binding [1]}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Menu Height="18" VerticalAlignment="Top">
+            <MenuItem Header="Datei">
+                <MenuItem Header="Daten löschen" Click="MenuItem_Click_1"></MenuItem>
+                <Separator></Separator>
+                <MenuItem Header="Beenden" Click="MenuItem_Click_2"></MenuItem>
+            </MenuItem>
+
+            <MenuItem Header="Ansicht">
+                <MenuItem Header="Ansicht">
+                    <MenuItem Header="Fehlwürfe zusammenfassen" IsCheckable="True" IsChecked="True" Name="CombineFailsCheckbox" Checked="CombineFailsCheckbox_Checked" Unchecked="CombineFailsCheckbox_Unchecked"/>
+                    <MenuItem Header="Individuelle Wurfrunden anzeigen" IsCheckable="True" IsChecked="False" Name="ShowIndividual" Checked="ShowIndividual_Checked" Unchecked="ShowIndividual_Unchecked"/>
+                </MenuItem>
+                <MenuItem Header="Automatisch aktualisieren" IsCheckable="True" IsChecked="True" Name="AutoUpdateCheckbox" Checked="AutoUpdateCheckbox_Checked" Unchecked="AutoUpdateCheckbox_Unchecked">
+                    
+                </MenuItem>
+                <MenuItem Header="Aktualisieren" Click="MenuItem_Click" Name="UpdateMenuItem"></MenuItem>
+            </MenuItem>
+        </Menu>
 
     </Grid>
 </Window>
