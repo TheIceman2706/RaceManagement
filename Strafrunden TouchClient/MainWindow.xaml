@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Strafrunden_TouchClient"
         mc:Ignorable="d"
         Title="Strafrundeneingabe
-        " Height="429.812" Width="347.805">
+        " Height="465.691" Width="347.805">
     <Grid Margin="0,0,2,0">
         <Grid Height="318" VerticalAlignment="Bottom">
             <Button Content="1" Margin="10,10,0,0" HorizontalAlignment="Left" Width="77" Height="68" VerticalAlignment="Top" Name="Number1Button" Click="Number1Button_Click"/>
@@ -26,6 +26,7 @@
         <Label Content="Startnummer:" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="97,40,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" Name="FehlwürfeText"/>
         <Label Content="Fehlwürfe:" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top"/>
+        <TextBox Height="23" Margin="10,79,10,0" TextWrapping="Wrap" Text="http://localhost/strafrunden/" VerticalAlignment="Top" Name="UrlText"/>
 
     </Grid>
 </Window>

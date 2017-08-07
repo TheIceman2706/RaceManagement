@@ -86,7 +86,7 @@ namespace Strafrunden_TouchClient
 
                 var content = new FormUrlEncodedContent(values);
 
-                client.PostAsync("http://localhost/strafrunden/", content);
+                client.PostAsync(UrlText.Text, content);
 
                 StartnummerText.Text = "0";
                 FehlwürfeText.Text = "0";
