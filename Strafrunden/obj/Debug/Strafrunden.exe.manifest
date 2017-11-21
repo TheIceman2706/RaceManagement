@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="Strafrunden.exe" version="1.0.20.6" publicKeyToken="0000000000000000" language="de" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="Strafrunden.exe" version="1.0.20.7" publicKeyToken="0000000000000000" language="de" processorArchitecture="msil" type="win32" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="Strafrunden" version="1.0.6535.302" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="Strafrunden" version="1.0.6535.342" language="neutral" processorArchitecture="msil" />
     <commandLine file="Strafrunden.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -55,13 +55,13 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Strafrunden.exe" size="36344">
-      <assemblyIdentity name="Strafrunden" version="1.0.6535.302" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="Strafrunden" version="1.0.6535.342" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>DwAVfc6qmUL22ZA/cyaE6sxawPDKe0qyKrjK1dc40xQ=</dsig:DigestValue>
+        <dsig:DigestValue>4too+G+IumFiDUXLFvRUwyljOvWhhufu2nQT0kAEikI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
