@@ -239,7 +239,7 @@ namespace Strafrunden
 
         private void HelpMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Falls der Server von aussen nicht zu erreichen ist, überprüfen Sie Ihre Firewall-Einstellungen.", "Hilfe", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("Falls der Server von aussen nicht zu erreichen ist, überprüfen Sie Ihre Firewall-Einstellungen.\nVersion:"+System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(), "Hilfe", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         bool auto;
