@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Net;
 using System.Net.Http;
+using System.Windows;
 
 namespace Strafrunden.Server
 {
@@ -34,7 +35,15 @@ namespace Strafrunden.Server
 
         public void Start() //TODO: make pulling context into loop (!)
         {
-            _baseServer.Start();
+            try
+            {
+                _baseServer.Start();
+            }
+            catch(HttpListenerException e)
+            {
+                MessageBox.Show("Server konnte nicht gestertet werden:\n" + e.Message, "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+                App.Current.Shutdown();
+            }
             Running = true;
             _responderThread.Start();
         }

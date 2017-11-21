@@ -25,6 +25,7 @@ namespace Strafrunden
         {
             int failed = 0;
             int startNr = 0;
+            int retID = -1;
             if (context.Request.HttpMethod == "POST")
             {
                 string input = "";
@@ -60,8 +61,8 @@ namespace Strafrunden
 
                         com.Transaction = trans;
 
-                        com.CommandText = String.Format("INSERT INTO strafrunden (startnummer,fehler) VALUES ({0},{1});",startNr,failed);
-                        com.ExecuteNonQuery();
+                        com.CommandText = String.Format("INSERT INTO strafrunden (startnummer,fehler) Output Inserted.id VALUES ({0},{1});", startNr,failed);
+                        retID  = (int)com.ExecuteScalar();
 
                         trans.Commit();
                     }
@@ -87,13 +88,13 @@ namespace Strafrunden
                 <label for='nr'>Startnummer:</label>
                 <input type='number' name='nr' autocomplete='off'><br/>
                 <label for='trown'>Fehlwürfe:</label>
-                <input type='number' name='thrown' autocomplete='off'><br/>
+                <input type='number' name='thrown' autocomplete='off' min='0' max='3'><br/>
                 <input type='submit' value='Speichern'>
             </form>
         </div>";
             if(startNr != 0)
             {
-                htmlTemplate += "<div class='lastSavedDisplay'> <h3> Letzte von Ihnen eingegebene Daten:</h3><p> Startnummer: "+startNr+"</p><p> Fehlwürfe: "+failed+" </div>" ;
+                htmlTemplate += "<div class='lastSavedDisplay'> <h3> Letzte von Ihnen eingegebene Daten:</h3><p> Startnummer: "+startNr+"</p><p> Fehlwürfe: "+failed+"</p><p> Wurfrunden-ID: "+retID+" (bitte bei Falschen eingaben bereithalten)</p> </div>" ;
             }
     htmlTemplate += "</body></html>";
             byte[] buf = new byte[htmlTemplate.Length];

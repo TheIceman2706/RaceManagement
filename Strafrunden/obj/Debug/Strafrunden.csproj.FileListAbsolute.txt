@@ -14,3 +14,12 @@ C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\Str
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\Strafrunden_Content.g.cs
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\bin\Debug\strafrunden.css
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\Strafrunden.csprojResolveAssemblyReference.cache
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\bin\Debug\System.IO.FileSystem.Primitives.dll
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\bin\Debug\System.IO.Packaging.dll
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\bin\Debug\Strafrunden.exe.manifest
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\bin\Debug\Strafrunden.application
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\Strafrunden.TrustInfo.xml
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\Strafrunden.exe.manifest
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\Strafrunden.application

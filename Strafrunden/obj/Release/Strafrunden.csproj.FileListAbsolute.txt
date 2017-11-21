@@ -13,3 +13,13 @@ C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\S
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\Strafrunden.csproj.GenerateResource.Cache
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\Strafrunden.exe
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\Strafrunden.pdb
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\Strafrunden.csprojResolveAssemblyReference.cache
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\bin\Release\DocumentFormat.OpenXml.dll
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\bin\Release\System.IO.FileSystem.Primitives.dll
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\bin\Release\System.IO.Packaging.dll
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\bin\Release\DocumentFormat.OpenXml.xml
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\bin\Release\Strafrunden.exe.manifest
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\bin\Release\Strafrunden.application
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\Strafrunden.TrustInfo.xml
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\Strafrunden.exe.manifest
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\Strafrunden.application
