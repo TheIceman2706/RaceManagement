@@ -24,13 +24,13 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>false</MapFileExtensions>
-    <UpdateUrl>https://cdn.rawgit.com/TheIceman2706/RaceManagement/tree/master/Strafrunden/publish/</UpdateUrl>
+    <UpdateUrl>https://raw.githubusercontent.com/TheIceman2706/RaceManagement/master/Strafrunden/publish/</UpdateUrl>
     <TargetCulture>de</TargetCulture>
     <ProductName>Strafrunden</ProductName>
     <PublisherName>Friedrich May</PublisherName>
     <WebPage>publish.htm</WebPage>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>11</ApplicationRevision>
+    <ApplicationRevision>12</ApplicationRevision>
     <ApplicationVersion>1.0.20.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
