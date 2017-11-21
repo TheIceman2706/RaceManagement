@@ -63,7 +63,7 @@ namespace Strafrunden
                 com.Dispose();
             }
             _server.Handler.RegisterResourceHandler(new StrafrundenPageHandler(sql));
-            _server.Handler.RegisterResourceHandler(new FileResourceHandler("/strafrunden/main.css", "..\\..\\strafrunden.css", "text/css"));
+            _server.Handler.RegisterResourceHandler(new FileResourceHandler("/strafrunden/main.css", "strafrunden.css", "text/css"));
             timer = new Timer();
 
 
