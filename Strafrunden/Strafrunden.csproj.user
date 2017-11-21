@@ -4,7 +4,7 @@
     <PublishUrlHistory>publish\</PublishUrlHistory>
     <InstallUrlHistory />
     <SupportUrlHistory />
-    <UpdateUrlHistory />
+    <UpdateUrlHistory>https://raw.githubusercontent.com/TheIceman2706/RaceManagement/master/Strafrunden/publish/</UpdateUrlHistory>
     <BootstrapperUrlHistory />
     <ErrorReportUrlHistory />
     <FallbackCulture>de-DE</FallbackCulture>

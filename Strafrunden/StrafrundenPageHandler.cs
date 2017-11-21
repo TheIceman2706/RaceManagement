@@ -73,7 +73,7 @@ namespace Strafrunden
                     startNr = 0;
                 }
 #if DEBUG
-                MessageBox.Show("Startnummer " + startNr + " hat " + failed + " Würfe verworfen.");
+                //MessageBox.Show("Startnummer " + startNr + " hat " + failed + " Würfe verworfen.");
 #endif
             }
             context.Response.StatusCode = 200;
