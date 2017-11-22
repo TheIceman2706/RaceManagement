@@ -32,7 +32,7 @@
     <PublisherName>Friedrich May</PublisherName>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>29</ApplicationRevision>
+    <ApplicationRevision>30</ApplicationRevision>
     <ApplicationVersion>1.0.20.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -73,6 +73,7 @@
   <PropertyGroup>
     <SignManifests>true</SignManifests>
   </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup />
   <PropertyGroup>
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
