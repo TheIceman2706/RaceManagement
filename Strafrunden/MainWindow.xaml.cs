@@ -127,11 +127,7 @@ namespace Strafrunden
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if (Properties.Settings.Default.ApplicationVersion != System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString())
-            {
-                Properties.Settings.Default.Upgrade();
-                Properties.Settings.Default.ApplicationVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            }
+            
 
             DataOutput.CanUserAddRows = false;
             DataOutput.CanUserDeleteRows = false;

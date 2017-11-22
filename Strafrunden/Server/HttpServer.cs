@@ -29,8 +29,7 @@ namespace Strafrunden.Server
 
             _baseServer.AuthenticationSchemes = AuthenticationSchemes.Anonymous;
 
-            _baseServer.Prefixes.Add("http://*:80/strafrunden/");
-            _baseServer.Prefixes.Add("http://*:8080/strafrunden/");
+            _baseServer.Prefixes.Add(Properties.Settings.Default.urlPrefix);
         }
 
         public void Start() //TODO: make pulling context into loop (!)

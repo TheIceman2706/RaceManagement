@@ -94,5 +94,14 @@ namespace Strafrunden.Properties {
                 this["ApplicationVersion"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://*:80/strafrunden/")]
+        public string urlPrefix {
+            get {
+                return ((string)(this["urlPrefix"]));
+            }
+        }
     }
 }
