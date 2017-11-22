@@ -3,7 +3,7 @@
   <PropertyGroup>
     <PublishUrlHistory>publish\</PublishUrlHistory>
     <InstallUrlHistory>https://raw.githubusercontent.com/TheIceman2706/RaceManagement/master/Strafrunden/publish/</InstallUrlHistory>
-    <SupportUrlHistory />
+    <SupportUrlHistory>https://github.com/TheIceman2706/RaceManagement/issues</SupportUrlHistory>
     <UpdateUrlHistory>https://raw.githubusercontent.com/TheIceman2706/RaceManagement/master/Strafrunden/publish/</UpdateUrlHistory>
     <BootstrapperUrlHistory />
     <ErrorReportUrlHistory />
