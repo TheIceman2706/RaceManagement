@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <configSections>
+        <sectionGroup name="userSettings" type="System.Configuration.UserSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" >
+            <section name="Strafrunden.Properties.Settings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false" />
+        </sectionGroup>
+        <sectionGroup name="applicationSettings" type="System.Configuration.ApplicationSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" >
+            <section name="Strafrunden.Properties.Settings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
+        </sectionGroup>
+    </configSections>
+    <startup> 
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.6" />
+    </startup>
+    <userSettings>
+        <Strafrunden.Properties.Settings>
+            <setting name="AutoUpdateView" serializeAs="String">
+                <value>True</value>
+            </setting>
+            <setting name="CombineView" serializeAs="String">
+                <value>True</value>
+            </setting>
+            <setting name="AutoExportExcel" serializeAs="String">
+                <value>False</value>
+            </setting>
+            <setting name="CombineExcel" serializeAs="String">
+                <value>False</value>
+            </setting>
+            <setting name="ExcelFile" serializeAs="String">
+                <value />
+            </setting>
+            <setting name="ApplicationVersion" serializeAs="String">
+                <value>0</value>
+            </setting>
+        </Strafrunden.Properties.Settings>
+    </userSettings>
+    <applicationSettings>
+        <Strafrunden.Properties.Settings>
+            <setting name="urlPrefix" serializeAs="String">
+                <value>http://*:80/strafrunden/</value>
+            </setting>
+        </Strafrunden.Properties.Settings>
+    </applicationSettings>
+</configuration>
