@@ -18,7 +18,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="ApplicationVersion" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="urlPrefix" Type="System.String" Scope="Application">
       <Value Profile="(Default)">http://*:80/strafrunden/</Value>
