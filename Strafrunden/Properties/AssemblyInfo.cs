@@ -10,7 +10,7 @@ using System.Windows;
 [assembly: AssemblyTitle("Strafrunden")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Friedrich May")]
 [assembly: AssemblyProduct("Strafrunden")]
 [assembly: AssemblyCopyright("Copyright © Friedrich May  2017")]
 [assembly: AssemblyTrademark("")]
@@ -51,7 +51,8 @@ using System.Windows;
 // Sie können alle Werte angeben oder Standardwerte für die Build- und Revisionsnummern verwenden,
 // übernehmen, indem Sie "*" eingeben:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyFileVersion("1.0.*")]
+[assembly: AssemblyVersion("1.0.1711.2218")]
+[assembly: AssemblyFileVersion("1.0.1711.2218")]
 [assembly: NeutralResourcesLanguage("de-DE")]
+[assembly: Guid("CA99B30F-E369-40F0-8934-745EA7A1306A")]
 
