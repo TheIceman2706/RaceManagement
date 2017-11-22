@@ -8,6 +8,7 @@ C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\bin\Release\D
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\bin\Release\System.IO.FileSystem.Primitives.dll
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\bin\Release\System.IO.Packaging.dll
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\bin\Release\DocumentFormat.OpenXml.xml
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\Strafrunden.csprojResolveAssemblyReference.cache
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\MainWindow.g.cs
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\App.g.cs
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\Strafrunden_Content.g.cs
@@ -22,4 +23,3 @@ C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\S
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\Strafrunden.application
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\Strafrunden.exe
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\Strafrunden.pdb
-C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\Strafrunden.csprojResolveAssemblyReference.cache
