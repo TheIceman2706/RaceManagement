@@ -3,7 +3,7 @@
   <asmv1:assemblyIdentity name="Strafrunden.exe" version="1.0.20.17" publicKeyToken="0000000000000000" language="de" processorArchitecture="msil" type="win32" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="Strafrunden" version="1.0.6535.29605" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="Strafrunden" version="1.0.6535.29702" language="neutral" processorArchitecture="msil" />
     <commandLine file="Strafrunden.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -55,13 +55,13 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Strafrunden.exe" size="37880">
-      <assemblyIdentity name="Strafrunden" version="1.0.6535.29605" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="Strafrunden" version="1.0.6535.29702" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ZT4M33ooOG+PRxeWdf0Xpn4PHx8GYzLi6rj1B6qvlrc=</dsig:DigestValue>
+        <dsig:DigestValue>uZJo6SuDofLasl8hoWEG2BGjdFXeiq/0tNfpmY5EdDA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
