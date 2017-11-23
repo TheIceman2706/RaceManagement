@@ -137,11 +137,13 @@ namespace Strafrunden
             AutoUpdateCheckbox.IsChecked =  Properties.Settings.Default.AutoUpdateView;
             if (Properties.Settings.Default.CombineView)
             {
+                ShowIndividual_Unchecked(this, new RoutedEventArgs());
                 CombineFailsCheckbox_Checked(this, new RoutedEventArgs());
                 CombineFailsCheckbox.IsChecked = true;
             }
             else
             {
+                CombineFailsCheckbox_Unchecked(this, new RoutedEventArgs());
                 ShowIndividual_Checked(this, new RoutedEventArgs());
                 ShowIndividual.IsChecked = true;
             }
@@ -150,6 +152,12 @@ namespace Strafrunden
             ExcelFileName.Header = Properties.Settings.Default.ExcelFile;
             ExcelFileStatus.Content = Properties.Settings.Default.ExcelFile;
             ExportExcel.IsChecked = Properties.Settings.Default.AutoExportExcel;
+
+            if (ExportExcel.IsChecked)
+                ExcelModeStatus.Content = "automatisch" + (ExcelCombine.IsChecked ? ", zusammengefasst" : ", detailiert");
+            else
+                ExcelModeStatus.Content = "manuell" + (ExcelCombine.IsChecked ? ", zusammengefasst" : ", detailiert");
+            Properties.Settings.Default.CombineExcel = ExcelCombine.IsChecked;
 
             timer.Start();
         }
