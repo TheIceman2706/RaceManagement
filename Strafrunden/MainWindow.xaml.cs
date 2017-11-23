@@ -151,6 +151,12 @@ namespace Strafrunden
             ExcelFileStatus.Content = Properties.Settings.Default.ExcelFile;
             ExportExcel.IsChecked = Properties.Settings.Default.AutoExportExcel;
 
+            if (ExportExcel.IsChecked)
+                ExcelModeStatus.Content = "automatisch" + (ExcelCombine.IsChecked ? ", zusammengefasst" : ", detailiert");
+            else
+                ExcelModeStatus.Content = "manuell" + (ExcelCombine.IsChecked ? ", zusammengefasst" : ", detailiert");
+            Properties.Settings.Default.CombineExcel = ExcelCombine.IsChecked;
+
             timer.Start();
         }
 
