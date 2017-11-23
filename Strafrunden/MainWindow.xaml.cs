@@ -137,11 +137,13 @@ namespace Strafrunden
             AutoUpdateCheckbox.IsChecked =  Properties.Settings.Default.AutoUpdateView;
             if (Properties.Settings.Default.CombineView)
             {
+                ShowIndividual_Unchecked(this, new RoutedEventArgs());
                 CombineFailsCheckbox_Checked(this, new RoutedEventArgs());
                 CombineFailsCheckbox.IsChecked = true;
             }
             else
             {
+                CombineFailsCheckbox_Unchecked(this, new RoutedEventArgs());
                 ShowIndividual_Checked(this, new RoutedEventArgs());
                 ShowIndividual.IsChecked = true;
             }

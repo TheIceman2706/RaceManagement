@@ -34,10 +34,10 @@
 
             <MenuItem Header="Ansicht" Name="AnsichtMenuItem">
                 <MenuItem Header="Ansicht">
-                    <MenuItem Header="Fehlwürfe zusammenfassen" IsCheckable="True" IsChecked="True" Name="CombineFailsCheckbox" Checked="CombineFailsCheckbox_Checked" Unchecked="CombineFailsCheckbox_Unchecked"/>
-                    <MenuItem Header="Individuelle Wurfrunden anzeigen" IsCheckable="True" IsChecked="False" Name="ShowIndividual" Checked="ShowIndividual_Checked" Unchecked="ShowIndividual_Unchecked"/>
+                    <MenuItem Header="Fehlwürfe zusammenfassen" IsCheckable="True"  Name="CombineFailsCheckbox" Checked="CombineFailsCheckbox_Checked" Unchecked="CombineFailsCheckbox_Unchecked"/>
+                    <MenuItem Header="Individuelle Wurfrunden anzeigen" IsCheckable="True"  Name="ShowIndividual" Checked="ShowIndividual_Checked" Unchecked="ShowIndividual_Unchecked"/>
                 </MenuItem>
-                <MenuItem Header="Automatisch aktualisieren" IsCheckable="True" IsChecked="True" Name="AutoUpdateCheckbox" Checked="AutoUpdateCheckbox_Checked" Unchecked="AutoUpdateCheckbox_Unchecked">
+                <MenuItem Header="Automatisch aktualisieren" IsCheckable="True"  Name="AutoUpdateCheckbox" Checked="AutoUpdateCheckbox_Checked" Unchecked="AutoUpdateCheckbox_Unchecked">
                     
                 </MenuItem>
                 <MenuItem Header="Aktualisieren" Click="MenuItem_Click" Name="UpdateMenuItem"></MenuItem>
