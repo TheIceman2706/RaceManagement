@@ -19,6 +19,7 @@ using MessageBox = System.Windows.MessageBox;
 using System.Data;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
+using Strafrunden.Server;
 
 namespace Strafrunden
 {
@@ -62,8 +63,8 @@ namespace Strafrunden
                 com.ExecuteNonQuery();
                 com.Dispose();
             }
-            _server.Handler.RegisterResourceHandler(new StrafrundenPageHandler(sql));
-            _server.Handler.RegisterResourceHandler(new FileResourceHandler("/strafrunden/main.css", "strafrunden.css", "text/css"));
+            Handlers.RegisterResourceHandler(new StrafrundenPageHandler(sql));
+            Handlers.RegisterResourceHandler(new FileResourceHandler("/strafrunden/main.css", "strafrunden.css", "text/css"));
             timer = new Timer();
 
 

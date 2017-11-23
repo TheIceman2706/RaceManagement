@@ -39,45 +39,82 @@ namespace Strafrunden
                     }
                 }
 
-                string[] args = input.Split('&');
-                try
+                if(TryParseArgs(input.Split('&'), ref failed, ref startNr))
                 {
-                    foreach (string str in args)
-                    {
-                        if (str.StartsWith("thrown="))
-                        {
-                            failed = Convert.ToInt32(str.Substring(7));
-                        }
-                        if (str.StartsWith("nr="))
-                        {
-                            startNr = Convert.ToInt32(str.Substring(3));
-                        }
-                    }
-
-                    if(startNr != 0)
-                    {
-                        SqlTransaction trans = sql.BeginTransaction();
-                        SqlCommand com = sql.CreateCommand();
-
-                        com.Transaction = trans;
-
-                        com.CommandText = String.Format("INSERT INTO strafrunden (startnummer,fehler) Output Inserted.id VALUES ({0},{1});", startNr,failed);
-                        retID  = (int)com.ExecuteScalar();
-
-                        trans.Commit();
-                    }
+                    TrySaveData(failed, startNr, ref retID);
                 }
-                catch (Exception e)
-                {
-                    failed = 0;
-                    startNr = 0;
-                }
-#if DEBUG
-                //MessageBox.Show("Startnummer " + startNr + " hat " + failed + " Würfe verworfen.");
-#endif
             }
             context.Response.StatusCode = 200;
-            string htmlTemplate =
+            string html = FormHTMLResopnse(startNr, failed, retID);
+            byte[] buf = ToByteArray(html);
+
+            context.Response.OutputStream.Write(buf, 0, buf.Length);
+            context.Response.Close();
+        }
+
+        private byte[] ToByteArray(string html)
+        {
+            byte[] buf = new byte[html.Length];
+
+            for (int i = 0; i < html.Length; i++)
+            {
+                buf[i] = System.Convert.ToByte(html[i]);
+            }
+            return buf;
+        }
+
+        private bool TrySaveData(int failed, int startNr, ref int retID)
+        {
+            try
+            {
+                if (startNr != 0)
+                {
+                    SqlTransaction trans = sql.BeginTransaction();
+                    SqlCommand com = sql.CreateCommand();
+
+                    com.Transaction = trans;
+
+                    com.CommandText = String.Format("INSERT INTO strafrunden (startnummer,fehler) Output Inserted.id VALUES ({0},{1});", startNr, failed);
+                    retID = (int)com.ExecuteScalar();
+
+                    trans.Commit();
+                }
+            }
+            catch
+            { 
+                return false;
+            }
+            return true;
+        }
+
+        private bool TryParseArgs(string[] args, ref int failed, ref int startNr)
+        {
+            try
+            {
+                foreach (string str in args)
+                {
+                    if (str.StartsWith("thrown="))
+                    {
+                        failed = Convert.ToInt32(str.Substring(7));
+                    }
+                    if (str.StartsWith("nr="))
+                    {
+                        startNr = Convert.ToInt32(str.Substring(3));
+                    }
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                failed = 0;
+                startNr = 0;
+                return false;
+            }
+        }
+
+        private string FormHTMLResopnse(int startNr, int failed, int retID)
+        {
+            string response =
                 @"<html><head><title>Strafrundeneingabe</title>
 <link rel='stylesheet' href='main.css'></script>
 <meta name='viewport' content='width = device-width, initial-scale = 1'/></head>
@@ -92,19 +129,12 @@ namespace Strafrunden
                 <input type='submit' value='Speichern'>
             </form>
         </div>";
-            if(startNr != 0)
+            if (startNr != 0)
             {
-                htmlTemplate += "<div class='lastSavedDisplay'> <h3> Letzte von Ihnen eingegebene Daten:</h3><p> Startnummer: "+startNr+"</p><p> Fehlwürfe: "+failed+"</p><p> Wurfrunden-ID: "+retID+" (bitte bei Falschen eingaben bereithalten)</p> </div>" ;
+                response += "<div class='lastSavedDisplay'> <h3> Letzte von Ihnen eingegebene Daten:</h3><p> Startnummer: " + startNr + "</p><p> Fehlwürfe: " + failed + "</p><p> Wurfrunden-ID: " + retID + " (bitte bei Falschen eingaben bereithalten)</p> </div>";
             }
-    htmlTemplate += "</body></html>";
-            byte[] buf = new byte[htmlTemplate.Length];
-
-            for (int i = 0; i < htmlTemplate.Length; i++)
-            {
-                buf[i] = System.Convert.ToByte(htmlTemplate[i]);
-            }
-            context.Response.OutputStream.Write(buf, 0, buf.Length);
-            context.Response.Close();
+            response += "</body></html>";
+            return response;
         }
 
         public StrafrundenPageHandler()

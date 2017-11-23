@@ -34,16 +34,7 @@ namespace Strafrunden
                 }
                 catch(System.IO.FileNotFoundException e)
                 {
-                    string html404Template = "<html><body><div style='width: 500px; height: 300px; margin-top:100px; margin-left:auto; margin-right:auto;'><h1>ERROR 404</h>\n\r<p>The resource you requested is not avaiable</p></div></body></html>";
-                    byte[] err404buf = new byte[html404Template.Length];
-                    context.Response.StatusCode = 404;
-
-                    for (int i = 0; i < html404Template.Length; i++)
-                    {
-                        err404buf[i] = System.Convert.ToByte(html404Template[i]);
-                    }
-                    context.Response.OutputStream.Write(err404buf, 0, err404buf.Length);
-                    context.Response.Close();
+                    Handlers.HandleError(Handlers.EnumErrorType.NotFound,context);
                 }
             }
         }

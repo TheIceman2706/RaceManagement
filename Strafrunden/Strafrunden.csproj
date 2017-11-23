@@ -117,6 +117,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="FileResourceHandler.cs" />
+    <Compile Include="Server\Handlers.cs" />
     <Compile Include="Server\HttpHandler.cs" />
     <Compile Include="Server\HttpServer.cs" />
     <Compile Include="Server\IResourceHandler.cs" />
@@ -153,6 +154,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
     <None Include="Properties\app.manifest" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
