@@ -114,27 +114,7 @@ namespace Strafrunden
 
         private string FormHTMLResopnse(int startNr, int failed, int retID)
         {
-            string response =
-                @"<html><head><title>Strafrundeneingabe</title>
-<link rel='stylesheet' href='main.css'></script>
-<meta name='viewport' content='width = device-width, initial-scale = 1'/></head>
-            <body>
-        <div class = 'strafrundenForm'>
-            <h2>Strafrunden Speichern:</h2>
-            <form action='/strafrunden/' method='post'>
-                <label for='nr'>Startnummer:</label>
-                <input type='number' name='nr' autocomplete='off'><br/>
-                <label for='trown'>Fehlwürfe:</label>
-                <input type='number' name='thrown' autocomplete='off' min='0' max='3'><br/>
-                <input type='submit' value='Speichern'>
-            </form>
-        </div>";
-            if (startNr != 0)
-            {
-                response += "<div class='lastSavedDisplay'> <h3> Letzte von Ihnen eingegebene Daten:</h3><p> Startnummer: " + startNr + "</p><p> Fehlwürfe: " + failed + "</p><p> Wurfrunden-ID: " + retID + " (bitte bei Falschen eingaben bereithalten)</p> </div>";
-            }
-            response += "</body></html>";
-            return response;
+            return String.Format(Properties.Resources.StrafrundenHTMLTemplate, startNr == 0 ? "style='display:none'" : "", startNr, failed, retID);
         }
 
         public StrafrundenPageHandler()

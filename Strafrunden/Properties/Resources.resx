@@ -46,7 +46,7 @@
     
     mimetype: application/x-microsoft.net.object.binary.base64
     value   : The object must be serialized with 
-            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
     
     mimetype: application/x-microsoft.net.object.soap.base64
@@ -60,6 +60,7 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
@@ -68,9 +69,10 @@
               <xsd:sequence>
                 <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="name" use="required" type="xsd:string" />
               <xsd:attribute name="type" type="xsd:string" />
               <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
@@ -85,9 +87,10 @@
                 <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
                 <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
               <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
               <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
@@ -109,9 +112,16 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="StrafrundenHTMLTemplate" xml:space="preserve">
+    <value>&lt;html&gt;&lt;head&gt;&lt;title&gt;Strafrundeneingabe&lt;/title&gt;&lt;link rel='stylesheet' href='main.css'&gt;&lt;/script&gt;&lt;meta name='viewport' content='width = device-width, initial-scale = 1'/&gt;&lt;/head&gt;&lt;body&gt;&lt;div class = 'strafrundenForm'&gt;&lt;h2&gt;Strafrunden Speichern:&lt;/h2&gt;&lt;form action='/strafrunden/' method='post'&gt;&lt;label for='nr'&gt;Startnummer:&lt;/label&gt;&lt;input type='number' name='nr' autocomplete='off'&gt;&lt;br/&gt;&lt;label for='trown'&gt;Fehlwürfe:&lt;/label&gt;&lt;input type='number' name='thrown' autocomplete='off' min='0' max='3'&gt;&lt;br/&gt;&lt;input type='submit' value='Speichern'&gt;&lt;/form&gt;&lt;/div&gt;&lt;div class='lastSavedDisplay' {0}&gt;&lt;h3&gt; Letzte von Ihnen eingegebene Daten:&lt;/h3&gt;&lt;p&gt; Startnummer: {1}&lt;/p&gt;&lt;p&gt; Fehlwürfe: {2}&lt;/p&gt;&lt;p&gt; Wurfrunden-ID: {3} (bitte bei Falschen eingaben bereithalten)&lt;/p&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</value>
+    <comment>{0}: insert "style='display:none'"
+{1}: insert startnummer
+{2}: insert fails
+{3}:insert id</comment>
+  </data>
 </root>
