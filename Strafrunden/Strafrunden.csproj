@@ -32,7 +32,7 @@
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>40</ApplicationRevision>
+    <ApplicationRevision>41</ApplicationRevision>
     <ApplicationVersion>1.1.27.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -75,9 +75,7 @@
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup />
-  <PropertyGroup>
-    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
-  </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
