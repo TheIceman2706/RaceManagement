@@ -23,3 +23,7 @@ C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\S
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\Strafrunden.application
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\Strafrunden.exe
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\Strafrunden.pdb
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\bin\Release\Logging.dll
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\bin\Release\Logging.pdb
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\LoadingWindow.g.cs
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\LoadingWindow.baml

@@ -32,8 +32,8 @@
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>42</ApplicationRevision>
-    <ApplicationVersion>1.1.30.%2a</ApplicationVersion>
+    <ApplicationRevision>43</ApplicationRevision>
+    <ApplicationVersion>1.2.31.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -125,12 +125,19 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="FileResourceHandler.cs" />
+    <Compile Include="LoadingWindow.xaml.cs">
+      <DependentUpon>LoadingWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Server\Handlers.cs" />
     <Compile Include="Server\HttpHandler.cs" />
     <Compile Include="Server\HttpServer.cs" />
     <Compile Include="Server\IResourceHandler.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="StrafrundenPageHandler.cs" />
+    <Page Include="LoadingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -222,6 +229,12 @@
       <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Logging\Logging.csproj">
+      <Project>{e5db01cd-3e48-4a86-bb83-4cf7c2a21291}</Project>
+      <Name>Logging</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

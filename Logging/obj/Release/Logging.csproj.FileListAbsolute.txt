@@ -1,0 +1,4 @@
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Logging\bin\Release\Logging.dll
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Logging\bin\Release\Logging.pdb
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Logging\obj\Release\Logging.dll
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Logging\obj\Release\Logging.pdb

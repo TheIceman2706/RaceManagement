@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Data;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -178,25 +179,24 @@ namespace Strafrunden
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
+            Logging.Log.Instance.Info("App starting...");
+            Logging.Log.Instance.Info("Setting up settings...");
+            
             if (Strafrunden.Properties.Settings.Default.ApplicationVersion != System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString())
             {
                 Strafrunden.Properties.Settings.Default.Upgrade();
                 Strafrunden.Properties.Settings.Default.ApplicationVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
             }
-
-
+            Logging.Log.Instance.Info("Setting up firewall...");
             if (!OpenFirewall())
             {
                 MessageBox.Show("Für die korrekte Funktion des Servers müssen Ports freigegeben werden. Dies benötigt Administratoren-Rechte.", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
+            Logging.Log.Instance.Info("Applying urlacl...");
             if (!AddUrlacl())
             {
                 MessageBox.Show("Für die korrekte Funktion des Servers müssen URLs freigegeben werden. Dies benötigt Administratoren-Rechte.", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            
-
-            
         }
 
         private void Application_Exit(object sender, ExitEventArgs e)
@@ -205,6 +205,8 @@ namespace Strafrunden
             {
                 MessageBox.Show("Für die korrekte Funktion des Servers müssen Ports freigegeben werden. Dies benötigt Administratoren-Rechte.", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            Logging.Log.Instance.Info("Application Closed!");
+            Logging.Log.Instance.SafeTo("lastLog.txt");
         }
     }
 }
