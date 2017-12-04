@@ -23,3 +23,7 @@ C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\Str
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\Strafrunden.exe
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\Strafrunden.pdb
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\Strafrunden.csprojResolveAssemblyReference.cache
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\bin\Debug\Logging.dll
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\bin\Debug\Logging.pdb
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\LoadingWindow.g.cs
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\LoadingWindow.baml

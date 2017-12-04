@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strafrunden", "Strafrunden\Strafrunden.csproj", "{667E9E51-16FA-44F3-B037-46CDC54D51BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strafrunden TouchClient", "Strafrunden TouchClient\Strafrunden TouchClient.csproj", "{1A72B38F-D54E-4866-A699-1BE8AA9C38DC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logging", "Logging\Logging.csproj", "{E5DB01CD-3E48-4A86-BB83-4CF7C2A21291}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{667E9E51-16FA-44F3-B037-46CDC54D51BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{667E9E51-16FA-44F3-B037-46CDC54D51BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{667E9E51-16FA-44F3-B037-46CDC54D51BC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1A72B38F-D54E-4866-A699-1BE8AA9C38DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1A72B38F-D54E-4866-A699-1BE8AA9C38DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1A72B38F-D54E-4866-A699-1BE8AA9C38DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1A72B38F-D54E-4866-A699-1BE8AA9C38DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5DB01CD-3E48-4A86-BB83-4CF7C2A21291}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5DB01CD-3E48-4A86-BB83-4CF7C2A21291}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5DB01CD-3E48-4A86-BB83-4CF7C2A21291}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5DB01CD-3E48-4A86-BB83-4CF7C2A21291}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

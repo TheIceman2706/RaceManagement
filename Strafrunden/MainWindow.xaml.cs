@@ -20,6 +20,8 @@ using System.Data;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
 using Strafrunden.Server;
+using Logging;
+
 
 namespace Strafrunden
 {
@@ -28,6 +30,8 @@ namespace Strafrunden
     /// </summary>
     public partial class MainWindow : Window
     {
+        Log log = Log.Instance;
+
         private Server.HttpServer _server;
         private SqlConnection sql;
         private ObservableCollection<int[]> data;
@@ -37,42 +41,69 @@ namespace Strafrunden
         private Timer timer;
         public MainWindow()
         {
+            log.Info("Main window creating...");
             data = new ObservableCollection<int[]>();
             _server = new Server.HttpServer();
             _server.Start();
             bool newDatabaseFile = false;
+
             if (!System.IO.File.Exists(System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "strafrunden.mdf")))
             {
+                log.Info("Creating database file...");
                 newDatabaseFile = true;
                 CreateSqlDatabase(System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "strafrunden.mdf"));
+                log.Info("Database file created!");
             }
-            sql = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"" + System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "strafrunden.mdf") + "\";Integrated Security=True");
             try
             {
+                log.Info("Checking SQL instances.");
+                string instN = "";
+                DataTable servers = System.Data.Sql.SqlDataSourceEnumerator.Instance.GetDataSources();
+                if (servers.Rows.Count < 1)
+                {
+                    instN = "MSSQLLocalDB";
+                }
+                else
+                {
+                    instN = (string)servers.Rows[0].ItemArray[1];
+                }
+                log.Info("SQL server instance is "+instN);
+                sql = new SqlConnection("Data Source=(LocalDB)\\"+instN+";AttachDbFilename=\"" + System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "strafrunden.mdf") + "\";Integrated Security=True");
+                log.Info("Opening SQL connection...");
                 sql.Open();
+                log.Info("SQL connection open!");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                log.Fail(ex.Message);
                 MessageBox.Show("Ist die Datenbank bereits in einem anderen Programm geöffnet?", "Fehler");
-                App.Current.Shutdown();
+                System.Windows.Application.Current.Shutdown();
             }
             if (newDatabaseFile)
             {
+                log.Info("Setting up new database...");
                 SqlCommand com = sql.CreateCommand();
                 com.CommandText = @"CREATE TABLE [dbo].[strafrunden] ([Id] INT IDENTITY (1, 1) NOT NULL,[startnummer] INT NOT NULL,[fehler]      INT NULL,PRIMARY KEY CLUSTERED ([Id] ASC));";
                 com.ExecuteNonQuery();
                 com.Dispose();
+                log.Info("Database set up!");
             }
+
+            log.Info("registering Handlers...");
             Handlers.RegisterResourceHandler(new StrafrundenPageHandler(sql));
             Handlers.RegisterResourceHandler(new FileResourceHandler("/strafrunden/main.css", "strafrunden.css", "text/css"));
+
+            log.Info("Creating timers...");
             timer = new Timer();
-
-
+            log.Info("Initializing components...");
             InitializeComponent();
+            log.Info("Creating timers...");
             timer.Enabled = true;
             timer.Interval = 1000;
             timer.Tick += Timer_Elapsed;
+            log.Info("Main window created!");
         }
+        
 
         private void Timer_Elapsed(object sender, EventArgs e)
         {
@@ -85,7 +116,9 @@ namespace Strafrunden
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            log.Info("Main window closing...");
             _server.Stop();
+            log.Info("Saving settings...");
             Properties.Settings.Default.Save();
         }
 
@@ -128,7 +161,8 @@ namespace Strafrunden
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            
+            log.Info("Main window loaded!");
+            log.Info("Setting up UI.");
 
             DataOutput.CanUserAddRows = false;
             DataOutput.CanUserDeleteRows = false;
