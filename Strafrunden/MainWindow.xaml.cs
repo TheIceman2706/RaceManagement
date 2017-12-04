@@ -46,12 +46,22 @@ namespace Strafrunden
                 newDatabaseFile = true;
                 CreateSqlDatabase(System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "strafrunden.mdf"));
             }
-            sql = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"" + System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "strafrunden.mdf") + "\";Integrated Security=True");
             try
             {
+                string instN = "";
+                DataTable servers = System.Data.Sql.SqlDataSourceEnumerator.Instance.GetDataSources();
+                if (servers.Rows.Count < 1)
+                {
+                    instN = "MSSQLLocalDB";
+                }
+                else
+                {
+                    instN = (string)servers.Rows[0].ItemArray[1];
+                }
+                sql = new SqlConnection("Data Source=(LocalDB)\\"+instN+";AttachDbFilename=\"" + System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "strafrunden.mdf") + "\";Integrated Security=True");
                 sql.Open();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 MessageBox.Show("Ist die Datenbank bereits in einem anderen Programm geöffnet?", "Fehler");
                 App.Current.Shutdown();
@@ -73,6 +83,7 @@ namespace Strafrunden
             timer.Interval = 1000;
             timer.Tick += Timer_Elapsed;
         }
+        
 
         private void Timer_Elapsed(object sender, EventArgs e)
         {
