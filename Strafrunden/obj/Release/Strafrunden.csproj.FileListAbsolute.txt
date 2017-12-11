@@ -3,7 +3,6 @@ C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\bin\Release\S
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\bin\Release\Strafrunden.exe.manifest
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\bin\Release\Strafrunden.application
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\bin\Release\Strafrunden.exe
-C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\bin\Release\Strafrunden.pdb
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\bin\Release\DocumentFormat.OpenXml.dll
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\bin\Release\System.IO.FileSystem.Primitives.dll
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\bin\Release\System.IO.Packaging.dll
@@ -22,7 +21,6 @@ C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\S
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\Strafrunden.exe.manifest
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\Strafrunden.application
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\Strafrunden.exe
-C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\Strafrunden.pdb
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\bin\Release\Logging.dll
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\bin\Release\Logging.pdb
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\LoadingWindow.g.cs

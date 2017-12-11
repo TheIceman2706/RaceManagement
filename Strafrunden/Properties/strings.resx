@@ -265,4 +265,11 @@ Version:{0}</value>
   <data name="Warning" xml:space="preserve">
     <value>Warnung</value>
   </data>
+  <data name="StrafrundenHTMLTemplate" xml:space="preserve">
+    <value>&lt;html&gt;&lt;head&gt;&lt;title&gt;Strafrundeneingabe&lt;/title&gt;&lt;link rel='stylesheet' href='main.css'&gt;&lt;/script&gt;&lt;meta name='viewport' content='width = device-width, initial-scale = 1'/&gt;&lt;/head&gt;&lt;body&gt;&lt;div class = 'strafrundenForm'&gt;&lt;h2&gt;Strafrunden Speichern:&lt;/h2&gt;&lt;form action='/strafrunden/' method='post'&gt;&lt;label for='nr'&gt;Startnummer:&lt;/label&gt;&lt;input type='number' name='nr' autocomplete='off'&gt;&lt;br/&gt;&lt;label for='trown'&gt;Fehlwürfe:&lt;/label&gt;&lt;input type='number' name='thrown' autocomplete='off' min='0' max='3'&gt;&lt;br/&gt;&lt;input type='submit' value='Speichern'&gt;&lt;/form&gt;&lt;/div&gt;&lt;div class='lastSavedDisplay' {0}&gt;&lt;h3&gt; Letzte von Ihnen eingegebene Daten:&lt;/h3&gt;&lt;p&gt; Startnummer: {1}&lt;/p&gt;&lt;p&gt; Fehlwürfe: {2}&lt;/p&gt;&lt;p&gt; Wurfrunden-ID: {3} (bitte bei Falschen eingaben bereithalten)&lt;/p&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</value>
+    <comment>{0}: insert "style='display:none'"
+{1}: insert startnummer
+{2}: insert fails
+{3}:insert id</comment>
+  </data>
 </root>

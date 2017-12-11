@@ -450,6 +450,15 @@ namespace Strafrunden.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die &lt;html&gt;&lt;head&gt;&lt;title&gt;Strafrundeneingabe&lt;/title&gt;&lt;link rel=&apos;stylesheet&apos; href=&apos;main.css&apos;&gt;&lt;/script&gt;&lt;meta name=&apos;viewport&apos; content=&apos;width = device-width, initial-scale = 1&apos;/&gt;&lt;/head&gt;&lt;body&gt;&lt;div class = &apos;strafrundenForm&apos;&gt;&lt;h2&gt;Strafrunden Speichern:&lt;/h2&gt;&lt;form action=&apos;/strafrunden/&apos; method=&apos;post&apos;&gt;&lt;label for=&apos;nr&apos;&gt;Startnummer:&lt;/label&gt;&lt;input type=&apos;number&apos; name=&apos;nr&apos; autocomplete=&apos;off&apos;&gt;&lt;br/&gt;&lt;label for=&apos;trown&apos;&gt;Fehlwürfe:&lt;/label&gt;&lt;input type=&apos;number&apos; name=&apos;thrown&apos; autocomplete=&apos;off&apos; min=&apos;0&apos; max=&apos;3&apos;&gt;&lt;br/&gt;&lt;input type=&apos;submit&apos; valu [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        /// </summary>
+        public static string StrafrundenHTMLTemplate {
+            get {
+                return ResourceManager.GetString("StrafrundenHTMLTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Wurfrunden-ID ähnelt.
         /// </summary>
         public static string ThrowID {

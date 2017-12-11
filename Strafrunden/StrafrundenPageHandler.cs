@@ -114,7 +114,7 @@ namespace Strafrunden
 
         private string FormHTMLResopnse(int startNr, int failed, int retID)
         {
-            return String.Format(Properties.Resources.StrafrundenHTMLTemplate, startNr == 0 ? "style='display:none'" : "", startNr, failed, retID);
+            return String.Format(Properties.strings.StrafrundenHTMLTemplate, startNr == 0 ? "style='display:none'" : "", startNr, failed, retID);
         }
 
         public StrafrundenPageHandler()
