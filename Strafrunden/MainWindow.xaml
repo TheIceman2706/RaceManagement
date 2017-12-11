@@ -3,62 +3,63 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:p="clr-namespace:Strafrunden.Properties"
         xmlns:local="clr-namespace:Strafrunden"
         mc:Ignorable="d"
-        Title="Strafrunden" Height="605.044" Width="758.848" Closing="Window_Closing" Loaded="Window_Loaded">
+        Title="{x:Static p:strings.Title}" Height="605.044" Width="758.848" Closing="Window_Closing" Loaded="Window_Loaded">
     <Grid>
         <DataGrid Margin="0,18,0,20" Name="DataOutput" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" CellEditEnding="DataOutput_CellEditEnding" BeginningEdit="DataOutput_BeginningEdit">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Startnummer" Binding="{Binding [0]}" />
-                <DataGridTextColumn Header="Fehlwürfe" Binding="{Binding [1]}"/>
-                <DataGridTextColumn Header="Wurfrunden-ID" Binding="{Binding [2]}" Visibility="Hidden" IsReadOnly="True"/>
+                <DataGridTextColumn Header="{x:Static p:strings.Starter}" Binding="{Binding [0]}" />
+                <DataGridTextColumn Header="{x:Static p:strings.Fails}" Binding="{Binding [1]}"/>
+                <DataGridTextColumn Header="{x:Static p:strings.ThrowID}" Binding="{Binding [2]}" Visibility="Hidden" IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
         <StatusBar Height="20" FontSize="10" VerticalAlignment="Bottom" >
-            <StatusBarItem  >Ansicht:</StatusBarItem>
+            <StatusBarItem Content="{x:Static p:strings.View}" ></StatusBarItem>
             <StatusBarItem Name="AnsichtStatus" ></StatusBarItem>
             <StatusBarItem Name="AnsichtStatus2" ></StatusBarItem>
-            <StatusBarItem  >Letzte Aktualisierung:</StatusBarItem>
+            <StatusBarItem Content="{x:Static p:strings.LastUpdate}" ></StatusBarItem>
             <StatusBarItem Name="LastUpdateStatus" ></StatusBarItem>
-            <StatusBarItem>Excel-File:</StatusBarItem>
+            <StatusBarItem Content="{x:Static p:strings.ExcelFile}"></StatusBarItem>
             <StatusBarItem Name="ExcelFileStatus"></StatusBarItem>
-            <StatusBarItem>Excel-Export:</StatusBarItem>
+            <StatusBarItem Content="{x:Static p:strings.ExcelExport}"></StatusBarItem>
             <StatusBarItem Name="ExcelModeStatus"></StatusBarItem>
         </StatusBar>
         <Menu Height="18" VerticalAlignment="Top">
             <MenuItem Header="Datei">
-                <MenuItem Header="Daten löschen" Click="MenuItem_Click_1"></MenuItem>
+                <MenuItem Header="{x:Static p:strings.ClearData}" Click="MenuItem_Click_1"></MenuItem>
                 <Separator></Separator>
-                <MenuItem Header="Beenden" Click="MenuItem_Click_2"></MenuItem>
+                <MenuItem Header="{x:Static p:strings.Quit}" Click="MenuItem_Click_2"></MenuItem>
             </MenuItem>
 
-            <MenuItem Header="Ansicht" Name="AnsichtMenuItem">
-                <MenuItem Header="Ansicht">
-                    <MenuItem Header="Fehlwürfe zusammenfassen" IsCheckable="True"  Name="CombineFailsCheckbox" Checked="CombineFailsCheckbox_Checked" Unchecked="CombineFailsCheckbox_Unchecked"/>
-                    <MenuItem Header="Individuelle Wurfrunden anzeigen" IsCheckable="True"  Name="ShowIndividual" Checked="ShowIndividual_Checked" Unchecked="ShowIndividual_Unchecked"/>
+            <MenuItem Header="{x:Static p:strings.View}" Name="AnsichtMenuItem">
+                <MenuItem Header="{x:Static p:strings.View}">
+                    <MenuItem Header="{x:Static p:strings.CombineFails}" IsCheckable="True"  Name="CombineFailsCheckbox" Checked="CombineFailsCheckbox_Checked" Unchecked="CombineFailsCheckbox_Unchecked"/>
+                    <MenuItem Header="{x:Static p:strings.ShowIndividual}" IsCheckable="True"  Name="ShowIndividual" Checked="ShowIndividual_Checked" Unchecked="ShowIndividual_Unchecked"/>
                 </MenuItem>
-                <MenuItem Header="Automatisch aktualisieren" IsCheckable="True"  Name="AutoUpdateCheckbox" Checked="AutoUpdateCheckbox_Checked" Unchecked="AutoUpdateCheckbox_Unchecked">
+                <MenuItem Header="{x:Static p:strings.AutoUpdate}" IsCheckable="True"  Name="AutoUpdateCheckbox" Checked="AutoUpdateCheckbox_Checked" Unchecked="AutoUpdateCheckbox_Unchecked">
                     
                 </MenuItem>
-                <MenuItem Header="Aktualisieren" Click="MenuItem_Click" Name="UpdateMenuItem"></MenuItem>
+                <MenuItem Header="{x:Static p:strings.Update}" Click="MenuItem_Click" Name="UpdateMenuItem"></MenuItem>
             </MenuItem>
 
-            <MenuItem Header="Einstellungen">
+            <MenuItem Header="{x:Static p:strings.Settings}">
                 <MenuItem Header="RaceResult">
                     <MenuItem Header="RaceResult-Link" IsCheckable="False" IsChecked="False"/>
                     <MenuItem Header="RaceResult Server:"/>
                     <TextBox Name="RaceResultServerText" Width="100px"/>
                 </MenuItem>
-                <MenuItem Header="Excel Export">
-                    <MenuItem Header="Jetzt Exportieren!" Click="MenuItem_Click_3"/>
-                    <MenuItem Header="Excel regelmäßig exportierern" IsCheckable="True" IsChecked="False" Name="ExportExcel" Click="ExportExcel_Click" />
+                <MenuItem Header="{x:Static p:strings.ExcelExport}">
+                    <MenuItem Header="{x:Static p:strings.ExportNow}" Click="MenuItem_Click_3"/>
+                    <MenuItem Header="{x:Static p:strings.ExportRegular}" IsCheckable="True" IsChecked="False" Name="ExportExcel" Click="ExportExcel_Click" />
                     <MenuItem Header="" Name="ExcelFileName"/>
-                    <MenuItem Header="Durchsuchen..." Click="MenuItem_Click_4"/>
-                    <MenuItem Header="Würfe zusammenfassen" Name="ExcelCombine" IsCheckable="True" IsChecked="True" Click="ExcelCombine_Click"/>
+                    <MenuItem Header="{x:Static p:strings.Search}" Click="MenuItem_Click_4"/>
+                    <MenuItem Header="{x:Static p:strings.CombineFails}" Name="ExcelCombine" IsCheckable="True" IsChecked="True" Click="ExcelCombine_Click"/>
                 </MenuItem>
             </MenuItem>
 
-            <MenuItem Header="Hilfe" Click="HelpMenuItem_Click">
+            <MenuItem Header="{x:Static p:strings.Help}" Click="HelpMenuItem_Click">
                 
             </MenuItem>
         </Menu>
