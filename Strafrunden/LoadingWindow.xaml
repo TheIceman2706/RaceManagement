@@ -3,13 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:p="clr-namespace:Strafrunden.Properties"
         xmlns:local="clr-namespace:Strafrunden"
         mc:Ignorable="d"
-        Title="Starting" Height="91.632" Width="407.322" WindowStyle="None">
+        Title="{x:Static p:strings.LoadingTitle}" Height="121.506" Width="407.322"
+        Loaded="Window_Loaded" ShowInTaskbar="False" ResizeMode="NoResize" Cursor="Wait">
     <Grid Margin="0,0,2,2">
-        <Label Content="Label" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <ProgressBar HorizontalAlignment="Left" Height="10" Margin="10,41,0,0" VerticalAlignment="Top" Width="377" Name="Progress" IsIndeterminate="True"/>
-        <Label Content="" HorizontalAlignment="Left" Margin="10,56,0,0" VerticalAlignment="Top" FontSize="8" Name="StatusLabel"/>
+        <Label Content="{x:Static p:strings.LoadingMessage}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <ProgressBar HorizontalAlignment="Left" Height="10" Margin="10,41,0,0" VerticalAlignment="Top" Width="377" Name="Progress"/>
+        <Label Content="" HorizontalAlignment="Right" Margin="0,54,10,0" VerticalAlignment="Top" FontSize="10" Name="StatusLabel"/>
 
     </Grid>
 </Window>

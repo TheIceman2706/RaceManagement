@@ -27,3 +27,4 @@ C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\bin\Debug\Log
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\bin\Debug\Logging.pdb
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\LoadingWindow.g.cs
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\LoadingWindow.baml
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\Strafrunden.Properties.strings.resources

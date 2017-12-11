@@ -39,55 +39,14 @@ namespace Strafrunden
         
 
         private Timer timer;
-        public MainWindow()
+        public MainWindow(SqlConnection con)
         {
+            sql = con;
             log.Info("Main window creating...");
             data = new ObservableCollection<int[]>();
             _server = new Server.HttpServer();
             _server.Start();
-            bool newDatabaseFile = false;
-
-            if (!System.IO.File.Exists(System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "strafrunden.mdf")))
-            {
-                log.Info("Creating database file...");
-                newDatabaseFile = true;
-                CreateSqlDatabase(System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "strafrunden.mdf"));
-                log.Info("Database file created!");
-            }
-            try
-            {
-                log.Info("Checking SQL instances.");
-                string instN = "";
-                DataTable servers = System.Data.Sql.SqlDataSourceEnumerator.Instance.GetDataSources();
-                if (servers.Rows.Count < 1)
-                {
-                    instN = "MSSQLLocalDB";
-                }
-                else
-                {
-                    instN = (string)servers.Rows[0].ItemArray[1];
-                }
-                log.Info("SQL server instance is "+instN);
-                sql = new SqlConnection("Data Source=(LocalDB)\\"+instN+";AttachDbFilename=\"" + System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "strafrunden.mdf") + "\";Integrated Security=True");
-                log.Info("Opening SQL connection...");
-                sql.Open();
-                log.Info("SQL connection open!");
-            }
-            catch (Exception ex)
-            {
-                log.Fail(ex.Message);
-                MessageBox.Show("Ist die Datenbank bereits in einem anderen Programm geöffnet?", "Fehler");
-                System.Windows.Application.Current.Shutdown();
-            }
-            if (newDatabaseFile)
-            {
-                log.Info("Setting up new database...");
-                SqlCommand com = sql.CreateCommand();
-                com.CommandText = @"CREATE TABLE [dbo].[strafrunden] ([Id] INT IDENTITY (1, 1) NOT NULL,[startnummer] INT NOT NULL,[fehler]      INT NULL,PRIMARY KEY CLUSTERED ([Id] ASC));";
-                com.ExecuteNonQuery();
-                com.Dispose();
-                log.Info("Database set up!");
-            }
+            
 
             log.Info("registering Handlers...");
             Handlers.RegisterResourceHandler(new StrafrundenPageHandler(sql));
@@ -130,7 +89,7 @@ namespace Strafrunden
             CombineFailsCheckbox.IsEnabled = false;
             if (ShowIndividual != null)
                 ShowIndividual.IsChecked = false;
-            AnsichtStatus2.Content = "zusammengefasste Ergebnisse";
+            AnsichtStatus2.Content = Properties.strings.CombinedFails;
 
             DataOutput.Columns[2].Visibility = Visibility.Hidden;
 
@@ -147,14 +106,14 @@ namespace Strafrunden
 
         private void AutoUpdateCheckbox_Checked(object sender, RoutedEventArgs e)
         {
-            AnsichtStatus.Content = "automatische Aktualisierung,";
+            AnsichtStatus.Content = Properties.strings.automatic+", ";
             Properties.Settings.Default.AutoUpdateView = true;
              
         }
 
         private void AutoUpdateCheckbox_Unchecked(object sender, RoutedEventArgs e)
         {
-            AnsichtStatus.Content = "manuelle Aktualisierung,";
+            AnsichtStatus.Content = Properties.strings.manual+", ";
             Properties.Settings.Default.AutoUpdateView = false;
              
         }
@@ -188,9 +147,9 @@ namespace Strafrunden
             ExportExcel.IsChecked = Properties.Settings.Default.AutoExportExcel;
 
             if (ExportExcel.IsChecked)
-                ExcelModeStatus.Content = "automatisch" + (ExcelCombine.IsChecked ? ", zusammengefasst" : ", detailiert");
+                ExcelModeStatus.Content = Properties.strings.automatic + (ExcelCombine.IsChecked ? ", " + Properties.strings.combined : ", " + Properties.strings.detailed);
             else
-                ExcelModeStatus.Content = "manuell" + (ExcelCombine.IsChecked ? ", zusammengefasst" : ", detailiert");
+                ExcelModeStatus.Content = Properties.strings.manual + (ExcelCombine.IsChecked ? ", " + Properties.strings.combined : ", " + Properties.strings.detailed);
             Properties.Settings.Default.CombineExcel = ExcelCombine.IsChecked;
 
             timer.Start();
@@ -223,7 +182,7 @@ namespace Strafrunden
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
-            if (System.Windows.MessageBox.Show("Sind sie sicher, dass sie alle Daten löschen möchten?", "Warnung", System.Windows.MessageBoxButton.YesNo, System.Windows.MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            if (System.Windows.MessageBox.Show(Properties.strings.QuestionDeleteData, Properties.strings.Warning,System.Windows.MessageBoxButton.YesNo, System.Windows.MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
                 SqlTransaction trans = sql.BeginTransaction();
                 SqlCommand com = sql.CreateCommand();
@@ -238,27 +197,7 @@ namespace Strafrunden
         {
             Close();
         }
-
-        public static void CreateSqlDatabase(string filename)
-        {
-            string databaseName = System.IO.Path.GetFileNameWithoutExtension(filename);
-            using (var connection = new System.Data.SqlClient.SqlConnection(
-                "Data Source=(LocalDB)\\MSSQLLocalDB;Initial Catalog=master; Integrated Security=true;"))
-            {
-                connection.Open();
-                using (var command = connection.CreateCommand())
-                {
-                    command.CommandText =
-                        String.Format("CREATE DATABASE {0} ON PRIMARY (NAME={0}, FILENAME='{1}')", databaseName, filename);
-                    command.ExecuteNonQuery();
-
-                    command.CommandText =
-                        String.Format("EXEC sp_detach_db '{0}', 'true'", databaseName);
-                    command.ExecuteNonQuery();
-
-                }
-            }
-        }
+        
 
         private void ShowIndividual_Checked(object sender, RoutedEventArgs e)
         {
@@ -267,7 +206,7 @@ namespace Strafrunden
             if (sql != null)
                 MenuItem_Click(sender, e);
             ShowIndividual.IsEnabled = false;
-            AnsichtStatus2.Content = "einzelne Wurfrunden";
+            AnsichtStatus2.Content = Properties.strings.detailed;
             DataOutput.Columns[2].Visibility = Visibility.Visible;
         }
 
@@ -278,7 +217,7 @@ namespace Strafrunden
 
         private void HelpMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Falls der Server von aussen nicht zu erreichen ist, überprüfen Sie Ihre Firewall-Einstellungen.\nVersion:"+System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(), "Hilfe", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show(String.Format(Properties.strings.HelpFormat,System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString()), Properties.strings.Help, MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         bool auto;
@@ -324,7 +263,7 @@ namespace Strafrunden
             }
             catch (FormatException ex)
             {
-                MessageBox.Show("Geben sie bitte nur Zahlen ein!\n"+ex.Message, "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(Properties.strings.OnlyNumbers+"\n"+ex.Message, Properties.strings.Error, MessageBoxButton.OK, MessageBoxImage.Error);
                 e.Cancel = true;
                 return;
             }
@@ -400,19 +339,19 @@ namespace Strafrunden
             }
             catch(System.IO.IOException ex)
             {
-                MessageBox.Show("Ausgabefehler.\n"+ExcelFileName.Header.ToString()+" ist möglicherweise geöffnet!", "Fehler");
+                MessageBox.Show(String.Format(Properties.strings.FIleOpenErrorFromat, ExcelFileName.Header.ToString()), Properties.strings.Error);
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Exception: "+ ex.Message,ex.ToString());
+                MessageBox.Show(Properties.strings.Error+": "+ ex.Message,ex.ToString());
             }
         }
 
         private void MenuItem_Click_4(object sender, RoutedEventArgs e)
         {
             SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Title = "Excel-Datei wählen oder erstellen...";
-            sfd.Filter = "Excel-Dateien | *.xlsx";
+            sfd.Title = Properties.strings.SelectExcelFile;
+            sfd.Filter = Properties.strings.ExcelFile+" | *.xlsx";
             if(sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 ExcelFileName.Header = sfd.FileName;
@@ -488,9 +427,9 @@ namespace Strafrunden
         private void ExportExcel_Click(object sender, RoutedEventArgs e)
         {
             if (ExportExcel.IsChecked)
-                ExcelModeStatus.Content = "automatisch" + (ExcelCombine.IsChecked?", zusammengefasst":", detailiert");
+                ExcelModeStatus.Content = Properties.strings.automatic + (ExcelCombine.IsChecked ? ", " + Properties.strings.combined : ", " + Properties.strings.detailed);
             else
-                ExcelModeStatus.Content = "manuell" + (ExcelCombine.IsChecked ? ", zusammengefasst" : ", detailiert");
+                ExcelModeStatus.Content = Properties.strings.manual + (ExcelCombine.IsChecked ? ", " + Properties.strings.combined : ", " + Properties.strings.detailed);
             Properties.Settings.Default.AutoExportExcel = ExportExcel.IsChecked;
              
         }
@@ -498,9 +437,9 @@ namespace Strafrunden
         private void ExcelCombine_Click(object sender, RoutedEventArgs e)
         {
             if (ExportExcel.IsChecked)
-                ExcelModeStatus.Content = "automatisch" + (ExcelCombine.IsChecked ? ", zusammengefasst" : ", detailiert");
+                ExcelModeStatus.Content = Properties.strings.automatic + (ExcelCombine.IsChecked ? ", " + Properties.strings.combined : ", " + Properties.strings.detailed);
             else
-                ExcelModeStatus.Content = "manuell" + (ExcelCombine.IsChecked ? ", zusammengefasst" : ", detailiert");
+                ExcelModeStatus.Content = Properties.strings.manual + (ExcelCombine.IsChecked ? ", " + Properties.strings.combined : ", " + Properties.strings.detailed);
             Properties.Settings.Default.CombineExcel = ExcelCombine.IsChecked;
              
         }
