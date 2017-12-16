@@ -29,6 +29,8 @@ namespace Strafrunden
         private MainWindow mw;
         private SqlConnection sql;
 
+        private string SQLInstanceName;
+
         public LoadingWindow()
         {
             loader = new BackgroundWorker();
@@ -37,6 +39,7 @@ namespace Strafrunden
             loader.ProgressChanged += Loader_ProgressChanged;
             loader.RunWorkerCompleted += Loader_RunWorkerCompleted;
             InitializeComponent();
+            SQLInstanceName = "MSSQLLocalDB";
         }
 
         private void Loader_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -101,28 +104,26 @@ namespace Strafrunden
         {
             bool newDatabaseFile = false;
 
+
+            loader.ReportProgress(40, Properties.strings.GettingSQLInstances);
+            DataTable servers = System.Data.Sql.SqlDataSourceEnumerator.Instance.GetDataSources();
+            if (servers.Rows.Count >= 1)
+            { 
+                SQLInstanceName = (string)servers.Rows[0].ItemArray[1];
+            }
+            loader.ReportProgress(60, Properties.strings.SQLServer + ": " + SQLInstanceName);
+
             if (!System.IO.File.Exists(System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "strafrunden.mdf")))
             {
-                log.Info("Creating database file...");
+                loader.ReportProgress(61,"Creating database file...");
                 newDatabaseFile = true;
                 CreateSqlDatabase(System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "strafrunden.mdf"));
-                loader.ReportProgress(45, Properties.strings.DatabaseCreated);
+                loader.ReportProgress(65, Properties.strings.DatabaseCreated);
             }
             try
             {
-                loader.ReportProgress(50, Properties.strings.GettingSQLInstances);
-                string instN = "";
-                DataTable servers = System.Data.Sql.SqlDataSourceEnumerator.Instance.GetDataSources();
-                if (servers.Rows.Count < 1)
-                {
-                    instN = "MSSQLLocalDB";
-                }
-                else
-                {
-                    instN = (string)servers.Rows[0].ItemArray[1];
-                }
-                loader.ReportProgress(65, Properties.strings.SQLServer+": " + instN);
-                sql = new SqlConnection("Data Source=(LocalDB)\\" + instN + ";AttachDbFilename=\"" + System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "strafrunden.mdf") + "\";Integrated Security=True");
+                
+                sql = new SqlConnection("Data Source=(LocalDB)\\" + SQLInstanceName + ";AttachDbFilename=\"" + System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "strafrunden.mdf") + "\";Integrated Security=True");
                 loader.ReportProgress(68, Properties.strings.OpeningSQL);
                 sql.Open();
                 loader.ReportProgress(75, Properties.strings.OpenedSQL);
@@ -149,6 +150,7 @@ namespace Strafrunden
             StatusLabel.Content = s;
 
             Logging.Log.Instance.Info("[STATUS]" + s);
+            log.SafeTo("loader.log.txt");
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -325,11 +327,11 @@ namespace Strafrunden
             return true;
         }
 
-        public static void CreateSqlDatabase(string filename)
+        private void CreateSqlDatabase(string filename)
         {
             string databaseName = System.IO.Path.GetFileNameWithoutExtension(filename);
             using (var connection = new System.Data.SqlClient.SqlConnection(
-                "Data Source=(LocalDB)\\MSSQLLocalDB;Initial Catalog=master; Integrated Security=true;"))
+                "Data Source=(LocalDB)\\"+SQLInstanceName+";Initial Catalog=master; Integrated Security=true;"))
             {
                 connection.Open();
                 using (var command = connection.CreateCommand())

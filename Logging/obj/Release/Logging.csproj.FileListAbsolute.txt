@@ -2,3 +2,8 @@ C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Logging\bin\Release\Loggi
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Logging\bin\Release\Logging.pdb
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Logging\obj\Release\Logging.dll
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Logging\obj\Release\Logging.pdb
+C:\Users\mayfr\Documents\Code\RaceManagement\Logging\bin\Release\Logging.dll
+C:\Users\mayfr\Documents\Code\RaceManagement\Logging\bin\Release\Logging.pdb
+C:\Users\mayfr\Documents\Code\RaceManagement\Logging\obj\Release\Logging.csprojResolveAssemblyReference.cache
+C:\Users\mayfr\Documents\Code\RaceManagement\Logging\obj\Release\Logging.dll
+C:\Users\mayfr\Documents\Code\RaceManagement\Logging\obj\Release\Logging.pdb
