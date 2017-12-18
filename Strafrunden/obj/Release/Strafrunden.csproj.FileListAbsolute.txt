@@ -53,3 +53,4 @@ C:\Users\mayfr\Documents\Code\RaceManagement\Strafrunden\obj\Release\Strafrunden
 C:\Users\mayfr\Documents\Code\RaceManagement\Strafrunden\obj\Release\Strafrunden.TrustInfo.xml
 C:\Users\mayfr\Documents\Code\RaceManagement\Strafrunden\obj\Release\Strafrunden.exe.manifest
 C:\Users\mayfr\Documents\Code\RaceManagement\Strafrunden\obj\Release\Strafrunden.application
+C:\Users\mayfr\Documents\Code\RaceManagement\Strafrunden\obj\Release\Strafrunden.csprojResolveAssemblyReference.cache
