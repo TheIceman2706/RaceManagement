@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="Strafrunden.exe" version="1.3.38.52" publicKeyToken="0000000000000000" language="de" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="Strafrunden.exe" version="1.3.38.53" publicKeyToken="0000000000000000" language="de" processorArchitecture="msil" type="win32" />
   <description asmv2:iconFile="icon-ConvertImage.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="Strafrunden" version="1.1.6561.27666" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="Strafrunden" version="1.1.6561.27730" language="neutral" processorArchitecture="msil" />
     <commandLine file="Strafrunden.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -62,19 +62,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>HcCnTGJQAuDBm/TKiIeVtFBBQBGQKQAQws0JRhUBdbw=</dsig:DigestValue>
+        <dsig:DigestValue>Hc0cuF7GNMSbCykneqJY4eVkyP79c4bwyGcxKHOLFeE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Strafrunden.exe" size="159168">
-      <assemblyIdentity name="Strafrunden" version="1.1.6561.27666" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="Strafrunden" version="1.1.6561.27730" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>faPyNdXrh1kSEKbF19KB0A2QSYvKnsGb6aq1wXrAf6M=</dsig:DigestValue>
+        <dsig:DigestValue>DM/l1vOd3+VrO65/LefPH0UgmEvaZtu5wOlTLpopnZU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
