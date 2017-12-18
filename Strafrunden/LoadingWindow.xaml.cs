@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -35,6 +36,7 @@ namespace Strafrunden
         {
             loader = new BackgroundWorker();
             loader.WorkerReportsProgress = true;
+            loader.WorkerSupportsCancellation = false;
             loader.DoWork += Loader_DoWork;
             loader.ProgressChanged += Loader_ProgressChanged;
             loader.RunWorkerCompleted += Loader_RunWorkerCompleted;
@@ -106,11 +108,32 @@ namespace Strafrunden
 
 
             loader.ReportProgress(40, Properties.strings.GettingSQLInstances);
-            DataTable servers = System.Data.Sql.SqlDataSourceEnumerator.Instance.GetDataSources();
-            if (servers.Rows.Count >= 1)
+
+            try
+            {
+                IList<string> instances = GetLocalDBInstances();
+                if (instances.Contains("MSSQLLocalDB"))
+                {
+                    SQLInstanceName = "MSSQLLocalDB";
+                }
+                else
+                {
+                    IEnumerable<string> versions = instances.Where((s) => { return s.StartsWith("v"); });
+                    if (versions.Count() == 0)
+                        throw new NullReferenceException();
+                    SQLInstanceName = versions.First();
+                }
+            }
+            catch(System.NullReferenceException)
+            {
+                log.Fail("no sql server!, trying localdb...");
+            }
+
+            // replace: HKLM/SOFTWARE/Microsoft/Microsoft SQL Server/Instance Names
+            /*if (servers.Rows.Count >= 1)
             { 
                 SQLInstanceName = (string)servers.Rows[0].ItemArray[1];
-            }
+            }*/
             loader.ReportProgress(60, Properties.strings.SQLServer + ": " + SQLInstanceName);
 
             if (!System.IO.File.Exists(System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "strafrunden.mdf")))
@@ -132,7 +155,7 @@ namespace Strafrunden
             {
                 log.Fail(ex.Message);
                 MessageBox.Show("Ist die Datenbank bereits in einem anderen Programm geöffnet?", "Fehler");
-                System.Windows.Application.Current.Shutdown();
+                this.Close();
             }
             if (newDatabaseFile)
             {
@@ -347,6 +370,37 @@ namespace Strafrunden
                 }
 
             }
+        }
+        internal static List<string> GetLocalDBInstances()
+        {
+            // Start the child process.
+            Process p = new Process();
+            // Redirect the output stream of the child process.
+            p.StartInfo.UseShellExecute = false;
+            p.StartInfo.RedirectStandardOutput = true;
+            p.StartInfo.FileName = "cmd.exe";
+            p.StartInfo.Arguments = "/C sqllocaldb info";
+            p.StartInfo.CreateNoWindow = true;
+            p.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            p.Start();
+            // Do not wait for the child process to exit before
+            // reading to the end of its redirected stream.
+            // p.WaitForExit();
+            // Read the output stream first and then wait.
+            string sOutput = p.StandardOutput.ReadToEnd();
+            p.WaitForExit();
+
+            //If LocalDb is not installed then it will return that 'sqllocaldb' is not recognized as an internal or external command operable program or batch file.
+            if (sOutput == null || sOutput.Trim().Length == 0 || sOutput.Contains("sqllocaldb"))
+                return null;
+            string[] instances = sOutput.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+            List<string> lstInstances = new List<string>();
+            foreach (var item in instances)
+            {
+                if (item.Trim().Length > 0)
+                    lstInstances.Add(item);
+            }
+            return lstInstances;
         }
     }
 }
