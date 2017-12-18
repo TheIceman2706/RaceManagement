@@ -393,7 +393,7 @@ namespace Strafrunden
             // Read the output stream first and then wait.
             string sOutput = p.StandardOutput.ReadToEnd();
             p.WaitForExit();
-
+            Logging.Log.Instance.Info(sOutput);
             //If LocalDb is not installed then it will return that 'sqllocaldb' is not recognized as an internal or external command operable program or batch file.
             if (sOutput == null || sOutput.Trim().Length == 0 || sOutput.Contains("sqllocaldb"))
                 return null;
