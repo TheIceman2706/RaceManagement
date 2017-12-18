@@ -112,17 +112,21 @@ namespace Strafrunden
             try
             {
                 IList<string> instances = GetLocalDBInstances();
-                if (instances.Contains("MSSQLLocalDB"))
+                foreach(string s in instances)
+                {
+                    log.Info("SQLInstance found:" + s);
+                }
+                /*if (instances.Contains("MSSQLLocalDB"))
                 {
                     SQLInstanceName = "MSSQLLocalDB";
                 }
                 else
-                {
-                    IEnumerable<string> versions = instances.Where((s) => { return s.StartsWith("v"); });
+                {*/
+                    IEnumerable<string> versions = instances.Where((s) => { return !s.StartsWith("."); });
                     if (versions.Count() == 0)
                         throw new NullReferenceException();
                     SQLInstanceName = versions.First();
-                }
+                //}
             }
             catch(System.NullReferenceException)
             {
