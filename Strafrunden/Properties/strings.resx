@@ -180,9 +180,12 @@
     <value>Hilfe</value>
   </data>
   <data name="HelpFormat" xml:space="preserve">
-    <value>Falls der Server von aussen nicht zu erreichen ist, überprüfen Sie Ihre Firewall-Einstellungen.
-Version:{0}</value>
-    <comment>{0}:Assembly Version</comment>
+    <value>Version:{0}
+(c) Friedrich May
+
+Der Server ist erreichbar unter den folgenden IP-Adressen:{1}</value>
+    <comment>{0}:Assembly Version
+{1}:IP Adresses</comment>
   </data>
   <data name="LastUpdate" xml:space="preserve">
     <value>Letzte Aktualisierung:</value>
