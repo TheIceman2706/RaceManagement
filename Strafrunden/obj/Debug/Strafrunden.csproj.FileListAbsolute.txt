@@ -28,3 +28,33 @@ C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\bin\Debug\Log
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\LoadingWindow.g.cs
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\LoadingWindow.baml
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\Strafrunden.Properties.strings.resources
+C:\Users\mayfr\Documents\Code\RaceManagement\Strafrunden\bin\Debug\strafrunden.css
+C:\Users\mayfr\Documents\Code\RaceManagement\Strafrunden\bin\Debug\Strafrunden.exe.config
+C:\Users\mayfr\Documents\Code\RaceManagement\Strafrunden\bin\Debug\Strafrunden.exe.manifest
+C:\Users\mayfr\Documents\Code\RaceManagement\Strafrunden\bin\Debug\Strafrunden.application
+C:\Users\mayfr\Documents\Code\RaceManagement\Strafrunden\bin\Debug\Strafrunden.exe
+C:\Users\mayfr\Documents\Code\RaceManagement\Strafrunden\bin\Debug\Strafrunden.pdb
+C:\Users\mayfr\Documents\Code\RaceManagement\Strafrunden\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\mayfr\Documents\Code\RaceManagement\Strafrunden\bin\Debug\Logging.dll
+C:\Users\mayfr\Documents\Code\RaceManagement\Strafrunden\bin\Debug\System.IO.FileSystem.Primitives.dll
+C:\Users\mayfr\Documents\Code\RaceManagement\Strafrunden\bin\Debug\System.IO.Packaging.dll
+C:\Users\mayfr\Documents\Code\RaceManagement\Strafrunden\bin\Debug\Logging.pdb
+C:\Users\mayfr\Documents\Code\RaceManagement\Strafrunden\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Users\mayfr\Documents\Code\RaceManagement\Strafrunden\obj\Debug\Strafrunden.csprojResolveAssemblyReference.cache
+C:\Users\mayfr\Documents\Code\RaceManagement\Strafrunden\obj\Debug\LoadingWindow.g.cs
+C:\Users\mayfr\Documents\Code\RaceManagement\Strafrunden\obj\Debug\MainWindow.g.cs
+C:\Users\mayfr\Documents\Code\RaceManagement\Strafrunden\obj\Debug\App.g.cs
+C:\Users\mayfr\Documents\Code\RaceManagement\Strafrunden\obj\Debug\Strafrunden_Content.g.cs
+C:\Users\mayfr\Documents\Code\RaceManagement\Strafrunden\obj\Debug\Strafrunden_MarkupCompile.cache
+C:\Users\mayfr\Documents\Code\RaceManagement\Strafrunden\obj\Debug\Strafrunden_MarkupCompile.lref
+C:\Users\mayfr\Documents\Code\RaceManagement\Strafrunden\obj\Debug\LoadingWindow.baml
+C:\Users\mayfr\Documents\Code\RaceManagement\Strafrunden\obj\Debug\MainWindow.baml
+C:\Users\mayfr\Documents\Code\RaceManagement\Strafrunden\obj\Debug\Strafrunden.g.resources
+C:\Users\mayfr\Documents\Code\RaceManagement\Strafrunden\obj\Debug\Strafrunden.Properties.Resources.resources
+C:\Users\mayfr\Documents\Code\RaceManagement\Strafrunden\obj\Debug\Strafrunden.Properties.strings.resources
+C:\Users\mayfr\Documents\Code\RaceManagement\Strafrunden\obj\Debug\Strafrunden.csproj.GenerateResource.Cache
+C:\Users\mayfr\Documents\Code\RaceManagement\Strafrunden\obj\Debug\Strafrunden.TrustInfo.xml
+C:\Users\mayfr\Documents\Code\RaceManagement\Strafrunden\obj\Debug\Strafrunden.exe.manifest
+C:\Users\mayfr\Documents\Code\RaceManagement\Strafrunden\obj\Debug\Strafrunden.application
+C:\Users\mayfr\Documents\Code\RaceManagement\Strafrunden\obj\Debug\Strafrunden.exe
+C:\Users\mayfr\Documents\Code\RaceManagement\Strafrunden\obj\Debug\Strafrunden.pdb
