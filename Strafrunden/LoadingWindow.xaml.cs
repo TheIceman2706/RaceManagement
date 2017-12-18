@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -177,7 +178,7 @@ namespace Strafrunden
             StatusLabel.Content = s;
 
             Logging.Log.Instance.Info("[STATUS]" + s);
-            log.SafeTo("loader.log.txt");
+            log.SafeTo(Directory.GetCurrentDirectory()+"loader.log.txt");
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
