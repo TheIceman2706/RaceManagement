@@ -221,9 +221,11 @@ namespace Strafrunden
 
             string hostname = Dns.GetHostName();
             IPHostEntry hostentry = Dns.GetHostByName(hostname);
-            foreach(IPAddress a in hostentry.AddressList)
+            string urlPart = Properties.Settings.Default.urlPrefix.Substring(Properties.Settings.Default.urlPrefix.IndexOf("//")+2);
+            urlPart = urlPart.Substring(urlPart.IndexOf('/'));
+            foreach (IPAddress a in hostentry.AddressList)
             {
-                iplist += "\n" + a;
+                iplist += "\nhttp://" + a +urlPart;
             }
 
             MessageBox.Show(String.Format(Properties.strings.HelpFormat,

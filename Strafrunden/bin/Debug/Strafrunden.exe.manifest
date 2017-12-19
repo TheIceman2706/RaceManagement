@@ -4,7 +4,7 @@
   <description asmv2:iconFile="icon-ConvertImage.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="Strafrunden" version="1.1.6562.384" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="Strafrunden" version="1.4.6562.23708" language="neutral" processorArchitecture="msil" />
     <commandLine file="Strafrunden.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -67,14 +67,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Strafrunden.exe" size="158656">
-      <assemblyIdentity name="Strafrunden" version="1.1.6562.384" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Strafrunden.exe" size="159168">
+      <assemblyIdentity name="Strafrunden" version="1.4.6562.23708" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>q2VcmHGrfVupfFQeB8xSV22otkITMR3ewRE5Pcg4w2M=</dsig:DigestValue>
+        <dsig:DigestValue>boWeMqapO4RScZk7Kpo+cuH+8X60SFgacq34K+i/Wt8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
