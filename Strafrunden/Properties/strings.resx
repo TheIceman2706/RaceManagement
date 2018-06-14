@@ -278,6 +278,6 @@ Der Server ist erreichbar unter den folgenden IP-Adressen:{1}</value>
     <value>Speichern</value>
   </data>
   <data name="SaveFails" xml:space="preserve">
-    <value>Strafrunden speichern</value>
+    <value>Fehlwürfe speichern</value>
   </data>
 </root>

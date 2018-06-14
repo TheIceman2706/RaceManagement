@@ -323,11 +323,11 @@ namespace Strafrunden
 
                 if (data.Count > 0)
                 {
-                    DataSet ds = new DataSet("Strafrunden");
-                    DataTable dt = new DataTable("Strafrunden");
+                    DataSet ds = new DataSet("ztf10");
+                    DataTable dt = new DataTable("ztf10");
 
-                    DataColumn startnr = new DataColumn("Startnummer");
-                    DataColumn strafr = new DataColumn("Strafrunden");
+                    DataColumn startnr = new DataColumn("startnr");
+                    DataColumn strafr = new DataColumn("ztf10");
                     DataColumn wurfid = data.ToArray()[0].Length > 2? new DataColumn("Wurf-ID") : null;
 
                     dt.Columns.Add(startnr);
