@@ -1,5 +1,0 @@
-C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Logging\bin\Debug\Logging.dll
-C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Logging\bin\Debug\Logging.pdb
-C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Logging\obj\Debug\Logging.csprojResolveAssemblyReference.cache
-C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Logging\obj\Debug\Logging.dll
-C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Logging\obj\Debug\Logging.pdb

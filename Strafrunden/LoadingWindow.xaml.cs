@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -29,14 +31,18 @@ namespace Strafrunden
         private MainWindow mw;
         private SqlConnection sql;
 
+        private string SQLInstanceName;
+
         public LoadingWindow()
         {
             loader = new BackgroundWorker();
             loader.WorkerReportsProgress = true;
+            loader.WorkerSupportsCancellation = false;
             loader.DoWork += Loader_DoWork;
             loader.ProgressChanged += Loader_ProgressChanged;
             loader.RunWorkerCompleted += Loader_RunWorkerCompleted;
             InitializeComponent();
+            SQLInstanceName = "MSSQLLocalDB";
         }
 
         private void Loader_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -101,28 +107,51 @@ namespace Strafrunden
         {
             bool newDatabaseFile = false;
 
+
+            loader.ReportProgress(40, Properties.strings.GettingSQLInstances);
+
+            try
+            {
+                IList<string> instances = GetLocalDBInstances();
+                foreach(string s in instances)
+                {
+                    log.Info("SQLInstance found:" + s);
+                }
+                /*if (instances.Contains("MSSQLLocalDB"))
+                {
+                    SQLInstanceName = "MSSQLLocalDB";
+                }
+                else
+                {*/
+                    IEnumerable<string> versions = instances.Where((s) => { return !s.StartsWith("."); });
+                    if (versions.Count() == 0)
+                        throw new NullReferenceException();
+                    SQLInstanceName = versions.First();
+                //}
+            }
+            catch(System.NullReferenceException)
+            {
+                log.Fail("no sql server!, trying localdb...");
+            }
+
+            // replace: HKLM/SOFTWARE/Microsoft/Microsoft SQL Server/Instance Names
+            /*if (servers.Rows.Count >= 1)
+            { 
+                SQLInstanceName = (string)servers.Rows[0].ItemArray[1];
+            }*/
+            loader.ReportProgress(60, Properties.strings.SQLServer + ": " + SQLInstanceName);
+
             if (!System.IO.File.Exists(System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "strafrunden.mdf")))
             {
-                log.Info("Creating database file...");
+                loader.ReportProgress(61,"Creating database file...");
                 newDatabaseFile = true;
                 CreateSqlDatabase(System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "strafrunden.mdf"));
-                loader.ReportProgress(45, Properties.strings.DatabaseCreated);
+                loader.ReportProgress(65, Properties.strings.DatabaseCreated);
             }
             try
             {
-                loader.ReportProgress(50, Properties.strings.GettingSQLInstances);
-                string instN = "";
-                DataTable servers = System.Data.Sql.SqlDataSourceEnumerator.Instance.GetDataSources();
-                if (servers.Rows.Count < 1)
-                {
-                    instN = "MSSQLLocalDB";
-                }
-                else
-                {
-                    instN = (string)servers.Rows[0].ItemArray[1];
-                }
-                loader.ReportProgress(65, Properties.strings.SQLServer+": " + instN);
-                sql = new SqlConnection("Data Source=(LocalDB)\\" + instN + ";AttachDbFilename=\"" + System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "strafrunden.mdf") + "\";Integrated Security=True");
+                
+                sql = new SqlConnection("Data Source=(LocalDB)\\" + SQLInstanceName + ";AttachDbFilename=\"" + System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "strafrunden.mdf") + "\";Integrated Security=True");
                 loader.ReportProgress(68, Properties.strings.OpeningSQL);
                 sql.Open();
                 loader.ReportProgress(75, Properties.strings.OpenedSQL);
@@ -131,7 +160,7 @@ namespace Strafrunden
             {
                 log.Fail(ex.Message);
                 MessageBox.Show("Ist die Datenbank bereits in einem anderen Programm geöffnet?", "Fehler");
-                System.Windows.Application.Current.Shutdown();
+                this.Close();
             }
             if (newDatabaseFile)
             {
@@ -149,6 +178,7 @@ namespace Strafrunden
             StatusLabel.Content = s;
 
             Logging.Log.Instance.Info("[STATUS]" + s);
+            log.SafeTo(Directory.GetCurrentDirectory()+"loader.log.txt");
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -325,11 +355,11 @@ namespace Strafrunden
             return true;
         }
 
-        public static void CreateSqlDatabase(string filename)
+        private void CreateSqlDatabase(string filename)
         {
             string databaseName = System.IO.Path.GetFileNameWithoutExtension(filename);
             using (var connection = new System.Data.SqlClient.SqlConnection(
-                "Data Source=(LocalDB)\\MSSQLLocalDB;Initial Catalog=master; Integrated Security=true;"))
+                "Data Source=(LocalDB)\\"+SQLInstanceName+";Initial Catalog=master; Integrated Security=true;"))
             {
                 connection.Open();
                 using (var command = connection.CreateCommand())
@@ -345,6 +375,37 @@ namespace Strafrunden
                 }
 
             }
+        }
+        internal static List<string> GetLocalDBInstances()
+        {
+            // Start the child process.
+            Process p = new Process();
+            // Redirect the output stream of the child process.
+            p.StartInfo.UseShellExecute = false;
+            p.StartInfo.RedirectStandardOutput = true;
+            p.StartInfo.FileName = "cmd.exe";
+            p.StartInfo.Arguments = "/C sqllocaldb info";
+            p.StartInfo.CreateNoWindow = true;
+            p.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            p.Start();
+            // Do not wait for the child process to exit before
+            // reading to the end of its redirected stream.
+            // p.WaitForExit();
+            // Read the output stream first and then wait.
+            string sOutput = p.StandardOutput.ReadToEnd();
+            p.WaitForExit();
+            Logging.Log.Instance.Info(sOutput);
+            //If LocalDb is not installed then it will return that 'sqllocaldb' is not recognized as an internal or external command operable program or batch file.
+            if (sOutput == null || sOutput.Trim().Length == 0 || sOutput.Contains("sqllocaldb"))
+                return null;
+            string[] instances = sOutput.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+            List<string> lstInstances = new List<string>();
+            foreach (var item in instances)
+            {
+                if (item.Trim().Length > 0)
+                    lstInstances.Add(item);
+            }
+            return lstInstances;
         }
     }
 }

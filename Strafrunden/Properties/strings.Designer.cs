@@ -242,8 +242,10 @@ namespace Strafrunden.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Falls der Server von aussen nicht zu erreichen ist, überprüfen Sie Ihre Firewall-Einstellungen.
-        ///Version:{0} ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Version:{0}
+        ///(c) Friedrich May
+        ///
+        ///Der Server ist erreichbar unter den folgenden IP-Adressen:{1} ähnelt.
         /// </summary>
         public static string HelpFormat {
             get {

@@ -21,7 +21,7 @@ using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
 using Strafrunden.Server;
 using Logging;
-
+using System.Net;
 
 namespace Strafrunden
 {
@@ -217,7 +217,20 @@ namespace Strafrunden
 
         private void HelpMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(String.Format(Properties.strings.HelpFormat,System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString()), Properties.strings.Help, MessageBoxButton.OK, MessageBoxImage.Information);
+            string iplist = "";
+
+            string hostname = Dns.GetHostName();
+            IPHostEntry hostentry = Dns.GetHostByName(hostname);
+            string urlPart = Properties.Settings.Default.urlPrefix.Substring(Properties.Settings.Default.urlPrefix.IndexOf("//")+2);
+            urlPart = urlPart.Substring(urlPart.IndexOf('/'));
+            foreach (IPAddress a in hostentry.AddressList)
+            {
+                iplist += "\nhttp://" + a +urlPart;
+            }
+
+            MessageBox.Show(String.Format(Properties.strings.HelpFormat,
+                System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(), iplist
+                ), Properties.strings.Help, MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         bool auto;
