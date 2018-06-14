@@ -26,3 +26,5 @@ C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\bin\Release\L
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\LoadingWindow.g.cs
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\LoadingWindow.baml
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\Strafrunden.Properties.strings.resources
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\Strafrunden.Properties.templates.resources
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\Strafrunden.csproj.CoreCompileInputs.cache

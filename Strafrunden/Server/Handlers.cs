@@ -9,15 +9,15 @@ namespace Strafrunden.Server
 {
     static class Handlers
     {
-        private static Dictionary<string, IResourceHandler> handlers = new Dictionary<string, IResourceHandler>();
+        private static Dictionary<string, Handler> handlers = new Dictionary<string, Handler>();
 
-        private static IResourceHandler error404handler = new Error404Handler();
-        private static IResourceHandler error500handler = new Error500Handler();
+        private static Handler error404handler = new Error404Handler();
+        private static Handler error500handler = new Error500Handler();
 
 
-        public static IResourceHandler FindHandler(string uri)
+        public static Handler FindHandler(string uri)
         {
-            IResourceHandler handler;
+            Handler handler;
             if (!handlers.TryGetValue(uri, out handler))
             {
                 return error404handler;
@@ -28,11 +28,11 @@ namespace Strafrunden.Server
         public static void HandleContext(string uri, HttpListenerContext context)
         {
             var handler = FindHandler(uri);
-            handler.HandleContext(context);
+            handler.Handle(context);
         }
 
 
-        public static bool RegisterResourceHandler(IResourceHandler handler)
+        public static bool RegisterResourceHandler(Handler handler)
         {
             if (handlers.ContainsKey(handler.HandledLocalPath))
                 return false;
@@ -46,7 +46,7 @@ namespace Strafrunden.Server
             handlers.Remove(localPath);
         }
 
-        public static void UnregisterResourceHandler(IResourceHandler handler)
+        public static void UnregisterResourceHandler(Handler handler)
         {
             UnregisterResourceHandler(handler.HandledLocalPath);
         }
@@ -56,62 +56,56 @@ namespace Strafrunden.Server
             switch (type)
             {
                 case EnumErrorType.NotFound:
-                    error404handler.HandleContext(context);
+                    error404handler.Handle(context);
                     break;
                 case EnumErrorType.Internal:
-                    error500handler.HandleContext(context);
+                    error500handler.Handle(context);
                     break;
                 default:
-                    error500handler.HandleContext(context);
+                    error500handler.Handle(context);
                     break;
             }
         }
 
-        private class Error404Handler : IResourceHandler
+        private class Error404Handler : Handler
         {
-            public string HandledLocalPath => "404";
-
-            public string GetHandledLocalPath()
+            public Error404Handler()
             {
-                return "404";
-            }
-
-            public void HandleContext(HttpListenerContext context)
-            {
-                string html404Template = "<html><body><div style='width: 500px; height: 300px; margin-top:100px; margin-left:auto; margin-right:auto;'><h1>ERROR 404</h>\n\r<p>The resource you requested is not avaiable.</p></div></body></html>";
-                byte[] err404buf = new byte[html404Template.Length];
-                context.Response.StatusCode = 404;
-
-                for (int i = 0; i < html404Template.Length; i++)
+                HandledLocalPath = "404";
+                HandleContext += (sender, e) =>
                 {
-                    err404buf[i] = System.Convert.ToByte(html404Template[i]);
-                }
-                context.Response.OutputStream.Write(err404buf, 0, err404buf.Length);
-                context.Response.Close();
-            }
+                    string html404Template = "<html><body><div style='width: 500px; height: 300px; margin-top:100px; margin-left:auto; margin-right:auto;'><h1>ERROR 404</h>\n\r<p>The resource you requested is not avaiable.</p></div></body></html>";
+                    byte[] err404buf = new byte[html404Template.Length];
+                    e.Context.Response.StatusCode = 404;
+
+                    for (int i = 0; i < html404Template.Length; i++)
+                    {
+                        err404buf[i] = System.Convert.ToByte(html404Template[i]);
+                    }
+                    e.Context.Response.OutputStream.Write(err404buf, 0, err404buf.Length);
+                    e.Context.Response.Close();
+                };
+            }   
         }
 
-        private class Error500Handler : IResourceHandler
+        private class Error500Handler : Handler
         {
-            public string HandledLocalPath => "500";
-
-            public string GetHandledLocalPath()
+            public Error500Handler()
             {
-                return HandledLocalPath;
-            }
-
-            public void HandleContext(HttpListenerContext context)
-            {
-                string html404Template = "<html><body><div style='width: 500px; height: 300px; margin-top:100px; margin-left:auto; margin-right:auto;'><h1>ERROR 500</h>\n\r<p>Internal server error.</p></div></body></html>";
-                byte[] err404buf = new byte[html404Template.Length];
-                context.Response.StatusCode = 500;
-
-                for (int i = 0; i < html404Template.Length; i++)
+                HandledLocalPath = "500";
+                HandleContext += (sender, e) =>
                 {
-                    err404buf[i] = System.Convert.ToByte(html404Template[i]);
-                }
-                context.Response.OutputStream.Write(err404buf, 0, err404buf.Length);
-                context.Response.Close();
+                    string html404Template = "<html><body><div style='width: 500px; height: 300px; margin-top:100px; margin-left:auto; margin-right:auto;'><h1>ERROR 500</h>\n\r<p>Internal server error.</p></div></body></html>";
+                    byte[] err404buf = new byte[html404Template.Length];
+                    e.Context.Response.StatusCode = 500;
+
+                    for (int i = 0; i < html404Template.Length; i++)
+                    {
+                        err404buf[i] = System.Convert.ToByte(html404Template[i]);
+                    }
+                    e.Context.Response.OutputStream.Write(err404buf, 0, err404buf.Length);
+                    e.Context.Response.Close();
+                };
             }
         }
 
