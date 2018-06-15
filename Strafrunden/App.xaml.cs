@@ -23,13 +23,19 @@ namespace Strafrunden
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             Logging.Log.Instance.Info("Application Starting...");
-
-            string dataPath =  System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Friedrich May\\Strafrunden\\");
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+            string dataPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Friedrich May\\Strafrunden\\");
             if (!Directory.Exists(dataPath))
             {
                 Directory.CreateDirectory(dataPath);
             }
             Directory.SetCurrentDirectory(dataPath);
+        }
+
+        private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            Logging.Log.Instance.Fail(e.ExceptionObject.ToString());
+            App.Current.Shutdown();
         }
 
         private void Application_Exit(object sender, ExitEventArgs e)
@@ -38,6 +44,12 @@ namespace Strafrunden
             Logging.Log.Instance.Info("Application Closed!");
             Logging.Log.Instance.SafeTo("lastLog.txt");
         }
-        
+
+        private void Application_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+        {
+            Logging.Log.Instance.Fail(e.Exception.ToString());
+            e.Handled = true;
+            App.Current.Shutdown();
+        }
     }
 }

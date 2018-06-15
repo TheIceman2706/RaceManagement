@@ -117,167 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="automatic" xml:space="preserve">
-    <value>automatisch</value>
-  </data>
-  <data name="AutoUpdate" xml:space="preserve">
-    <value>Automatisch aktualisieren</value>
-  </data>
-  <data name="ClearData" xml:space="preserve">
-    <value>Daten löschen</value>
-  </data>
-  <data name="combined" xml:space="preserve">
-    <value>zusammengefasst</value>
-  </data>
-  <data name="CombinedFails" xml:space="preserve">
-    <value>zusammengefasste Fehlwürfe</value>
-  </data>
-  <data name="CombineFails" xml:space="preserve">
-    <value>Fehlwürfe kombinieren</value>
-  </data>
-  <data name="CreatingMainWindow" xml:space="preserve">
-    <value>Erzeuge Hauptfenster...</value>
-  </data>
-  <data name="DatabaseCreated" xml:space="preserve">
-    <value>Datenbankdatei erstellt!</value>
-  </data>
-  <data name="detailed" xml:space="preserve">
-    <value>detailiert</value>
-  </data>
-  <data name="Error" xml:space="preserve">
-    <value>Fehler</value>
-  </data>
-  <data name="ErrorPortsNotFree" xml:space="preserve">
-    <value>Für die korrekte Funktion des Servers müssen Ports freigegeben werden. Dies benötigt Administratoren-Rechte.</value>
-  </data>
-  <data name="ErrorURLNotFree" xml:space="preserve">
-    <value>Für die korrekte Funktion des Servers müssen URLs freigegeben werden. Dies benötigt Administratoren-Rechte.</value>
-  </data>
-  <data name="ExcelExport" xml:space="preserve">
-    <value>Excel-Export:</value>
-  </data>
-  <data name="ExcelFile" xml:space="preserve">
-    <value>Excel-Datei:</value>
-  </data>
-  <data name="ExportNow" xml:space="preserve">
-    <value>Jetzt exportieren!</value>
-  </data>
-  <data name="ExportRegular" xml:space="preserve">
-    <value>Regelmäßig exportieren</value>
-  </data>
-  <data name="Fails" xml:space="preserve">
-    <value>Fehlwürfe</value>
-  </data>
-  <data name="FIleOpenErrorFromat" xml:space="preserve">
-    <value>Ausgabefehler.
-{0}  ist möglicherweise geöffnet!</value>
-    <comment>{0}: FIlename</comment>
-  </data>
-  <data name="GettingSQLInstances" xml:space="preserve">
-    <value>Rufe SQL-Server Instanzen ab...</value>
-  </data>
-  <data name="Help" xml:space="preserve">
-    <value>Hilfe</value>
-  </data>
-  <data name="HelpFormat" xml:space="preserve">
-    <value>Version:{0}
-(c) Friedrich May
-
-Der Server ist erreichbar unter den folgenden IP-Adressen:{1}</value>
-    <comment>{0}:Assembly Version
-{1}:IP Adresses</comment>
-  </data>
-  <data name="LastUpdate" xml:space="preserve">
-    <value>Letzte Aktualisierung:</value>
-  </data>
-  <data name="LoadingDatabase" xml:space="preserve">
-    <value>Lade Datenbank...</value>
-  </data>
-  <data name="LoadingMessage" xml:space="preserve">
-    <value>Lade Strafrundenserver... Bitte warten!</value>
-  </data>
-  <data name="LoadingSettings" xml:space="preserve">
-    <value>Lade Einstellungen...</value>
-  </data>
-  <data name="LoadingTitle" xml:space="preserve">
-    <value>Lade...</value>
-  </data>
-  <data name="manual" xml:space="preserve">
-    <value>manuell</value>
-  </data>
-  <data name="OnlyNumbers" xml:space="preserve">
-    <value>Geben sie bitte nur Zahlen ein!</value>
-  </data>
-  <data name="OpenedSQL" xml:space="preserve">
-    <value>SQL-Verbindung geöffnet!</value>
-  </data>
-  <data name="OpenFirewall" xml:space="preserve">
-    <value>Öffne Firewall...</value>
-  </data>
-  <data name="OpeningSQL" xml:space="preserve">
-    <value>Öffne SQL-Verbindung...</value>
-  </data>
-  <data name="QuestionDeleteData" xml:space="preserve">
-    <value>Sind sie sicher, dass sie alle Daten löschen möchten?</value>
-  </data>
-  <data name="Quit" xml:space="preserve">
-    <value>Beenden</value>
-  </data>
-  <data name="Search" xml:space="preserve">
-    <value>Durchsuchen...</value>
-  </data>
-  <data name="SelectExcelFile" xml:space="preserve">
-    <value>Excel-Datei wählen oder erstellen...</value>
-  </data>
-  <data name="Settings" xml:space="preserve">
-    <value>Einstellungen</value>
-  </data>
-  <data name="SettingsUpgraded" xml:space="preserve">
-    <value>Einstellungen upgegraded!</value>
-  </data>
-  <data name="SettingsVersion" xml:space="preserve">
-    <value>Einstellungsversion</value>
-  </data>
-  <data name="SettingUpDatabase" xml:space="preserve">
-    <value>Richte neue Datembank ein...</value>
-  </data>
-  <data name="SetURLACL" xml:space="preserve">
-    <value>Gebe URL frei...</value>
-  </data>
-  <data name="ShowIndividual" xml:space="preserve">
-    <value>Individuelle Wurfrunden anzeigen</value>
-  </data>
-  <data name="SQLServer" xml:space="preserve">
-    <value>SQL-Server</value>
-  </data>
-  <data name="Starter" xml:space="preserve">
-    <value>Startnummer</value>
-  </data>
-  <data name="ThrowID" xml:space="preserve">
-    <value>Wurfrunden-ID</value>
-  </data>
-  <data name="Title" xml:space="preserve">
-    <value>Strafrunden</value>
-  </data>
-  <data name="Update" xml:space="preserve">
-    <value>Aktualisieren</value>
-  </data>
-  <data name="View" xml:space="preserve">
-    <value>Ansicht</value>
-  </data>
-  <data name="Warning" xml:space="preserve">
-    <value>Warnung</value>
-  </data>
-  <data name="LastEnteredData" xml:space="preserve">
-    <value>Letzte von Ihnen eingegebene Daten</value>
-  </data>
-  <data name="RememberIfWrong" xml:space="preserve">
-    <value>bitte bei Falschen eingaben bereithalten</value>
-  </data>
-  <data name="Save" xml:space="preserve">
-    <value>Speichern</value>
-  </data>
-  <data name="SaveFails" xml:space="preserve">
-    <value>Fehlwürfe speichern</value>
+  <data name="Strafrunden" xml:space="preserve">
+    <value>&lt;html&gt;&lt;head&gt;&lt;title&gt;{6}&lt;/title&gt;&lt;link rel='stylesheet' href='main.css'&gt;&lt;/script&gt;&lt;meta name='viewport' content='width = device-width, initial-scale = 1'/&gt;&lt;/head&gt;&lt;body&gt;&lt;div class = 'strafrundenForm'&gt;&lt;h2&gt;{5}:&lt;/h2&gt;&lt;form action='/strafrunden/' method='post'&gt;&lt;label for='nr'&gt;{4}:&lt;/label&gt;&lt;input type='number' name='nr' autocomplete='off'&gt;&lt;br/&gt;&lt;label for='trown'&gt;{6}:&lt;/label&gt;&lt;input type='number' name='thrown' autocomplete='off' min='0' max='3'&gt;&lt;br/&gt;&lt;input type='submit' value='{7}'&gt;&lt;/form&gt;&lt;/div&gt;&lt;div class='lastSavedDisplay' {0}&gt;&lt;h3&gt; {9}:&lt;/h3&gt;&lt;p&gt; {4}: {1}&lt;/p&gt;&lt;p&gt; {6}: {2}&lt;/p&gt;&lt;p&gt; {8}: {3} ({10})&lt;/p&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</value>
+    <comment>{0}: insert "style='display:none'"
+{1}: insert startnummer
+{2}: insert fails
+{3}:insert id
+{4}:localized: Starter
+{5}:localized: SaveFails
+{6}:localized: Fails
+{7}:localized: Save
+{8}:localized: ThrowID
+{9}:localized: LastEnteredData
+{10}:localized: RememberIfWrong</comment>
   </data>
 </root>

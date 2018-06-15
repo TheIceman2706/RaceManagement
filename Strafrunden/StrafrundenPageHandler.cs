@@ -10,48 +10,9 @@ using System.Data.SqlClient;
 
 namespace Strafrunden
 {
-    class StrafrundenPageHandler : IResourceHandler, IDisposable
+    class StrafrundenPageHandler : Handler, IDisposable
     {
         private SqlConnection sql;
-
-        public string HandledLocalPath => "/strafrunden/";
-
-        public string GetHandledLocalPath()
-        {
-            return HandledLocalPath;
-        }
-
-        public void HandleContext(HttpListenerContext context)
-        {
-            int failed = 0;
-            int startNr = 0;
-            int retID = -1;
-            if (context.Request.HttpMethod == "POST")
-            {
-                string input = "";
-                int tmp = 0;
-                while(tmp != -1)
-                {
-                    tmp = context.Request.InputStream.ReadByte();
-                    if(tmp != -1)
-                    {
-                        input += (char)(byte)tmp;
-                    }
-                }
-
-                if(TryParseArgs(input.Split('&'), ref failed, ref startNr))
-                {
-                    TrySaveData(failed, startNr, ref retID);
-                }
-            }
-            context.Response.StatusCode = 200;
-            string html = FormHTMLResopnse(startNr, failed, retID);
-            byte[] buf = ToByteArray(html);
-
-            context.Response.OutputStream.Write(buf, 0, buf.Length);
-            context.Response.Close();
-        }
-
         private byte[] ToByteArray(string html)
         {
             byte[] buf = new byte[html.Length];
@@ -114,13 +75,12 @@ namespace Strafrunden
 
         private string FormHTMLResopnse(int startNr, int failed, int retID)
         {
-            return String.Format(Properties.strings.StrafrundenHTMLTemplate, startNr == 0 ? "style='display:none'" : "", startNr, failed, retID);
+            return String.Format(Properties.templates.Strafrunden, startNr == 0 ? "style='display:none'" : "", startNr, failed, retID,
+                Properties.strings.Starter,Properties.strings.SaveFails,Properties.strings.Fails,Properties.strings.Save,Properties.strings.ThrowID,Properties.strings.LastEnteredData,Properties.strings.RememberIfWrong);
         }
 
-        public StrafrundenPageHandler()
+        public StrafrundenPageHandler():this(new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Friedrich May\\Documents\\GitHub\\RaceManagement\\Strafrunden\\Strafrunden.mdf\";Integrated Security=True"))
         {
-            sql = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Friedrich May\\Documents\\GitHub\\RaceManagement\\Strafrunden\\Strafrunden.mdf\";Integrated Security=True");
-            sql.Open();
         }
 
         public StrafrundenPageHandler(SqlConnection con)
@@ -128,9 +88,43 @@ namespace Strafrunden
             sql = con;
             if (sql.State != System.Data.ConnectionState.Open)
                 sql.Open();
-        }
 
-        public void Dispose()
+
+            HandleContext += (sender, e) =>
+            {
+                int failed = 0;
+                int startNr = 0;
+                int retID = -1;
+                if (e.Context.Request.HttpMethod == "POST")
+                {
+                    string input = "";
+                    int tmp = 0;
+                    while (tmp != -1)
+                    {
+                        tmp = e.Context.Request.InputStream.ReadByte();
+                        if (tmp != -1)
+                        {
+                            input += (char)(byte)tmp;
+                        }
+                    }
+
+                    if (TryParseArgs(input.Split('&'), ref failed, ref startNr))
+                    {
+                        TrySaveData(failed, startNr, ref retID);
+                    }
+                }
+                e.Context.Response.StatusCode = 200;
+                string html = FormHTMLResopnse(startNr, failed, retID);
+                byte[] buf = ToByteArray(html);
+
+                e.Context.Response.OutputStream.Write(buf, 0, buf.Length);
+                e.Context.Response.Close();
+            };
+            HandledLocalPath = "/strafrunden/";
+
+    }
+
+    public void Dispose()
         {
             sql.Close();
             sql.Dispose();

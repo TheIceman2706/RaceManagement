@@ -4,7 +4,8 @@
              xmlns:local="clr-namespace:Strafrunden"
              StartupUri="LoadingWindow.xaml"
              Startup="Application_Startup"
-             Exit="Application_Exit">
+             Exit="Application_Exit"
+             DispatcherUnhandledException="Application_DispatcherUnhandledException">
     <Application.Resources>
          
     </Application.Resources>
