@@ -157,25 +157,23 @@ namespace Strafrunden
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            SqlTransaction trans = sql.BeginTransaction();
-            SqlCommand com = sql.CreateCommand();
-            com.Transaction = trans;
-            com.CommandText = dataQuery;
-            SqlDataReader rd = com.ExecuteReader();
-            data.Clear();
-            if (rd.HasRows)
+            using (SqlCommand com = sql.CreateCommand())
             {
-                while (rd.Read())
+                com.CommandText = dataQuery;
+                SqlDataReader rd = com.ExecuteReader();
+                data.Clear();
+                if (rd.HasRows)
                 {
-                    if (rd.FieldCount <= 2)
-                        data.Add(new int[] { rd.GetInt32(0), rd.GetInt32(1) });
-                    else
-                        data.Add(new int[] { rd.GetInt32(0), rd.GetInt32(1), rd.GetInt32(2) });
+                    while (rd.Read())
+                    {
+                        if (rd.FieldCount <= 2)
+                            data.Add(new int[] { rd.GetInt32(0), rd.GetInt32(1) });
+                        else
+                            data.Add(new int[] { rd.GetInt32(0), rd.GetInt32(1), rd.GetInt32(2) });
+                    }
                 }
+                rd.Close();
             }
-            rd.Close();
-           
-            trans.Commit();
 
             LastUpdateStatus.Content = DateTime.Now.ToLongTimeString()+" ("+DateTime.Now.ToShortDateString()+")";
         }
