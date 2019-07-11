@@ -60,7 +60,7 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>FC682A8700FB3C7D61CD6858258D966C63C4C85E</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>48A6D01B2490EB749B3BBE7792A1E02CF24F3B55</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>Strafrunden_TemporaryKey.pfx</ManifestKeyFile>

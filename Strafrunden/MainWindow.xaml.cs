@@ -454,5 +454,19 @@ namespace Strafrunden
             Properties.Settings.Default.CombineExcel = ExcelCombine.IsChecked;
              
         }
+
+        private void DataOutput_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if(e.Key == Key.Delete && DataOutput.SelectedIndex >= 0 && !CombineFailsCheckbox.IsChecked)
+            {
+                SqlTransaction trans = sql.BeginTransaction();
+                SqlCommand com = sql.CreateCommand();
+                com.Transaction = trans;
+                com.CommandText = "DELETE FROM strafrunden WHERE Id=" + data[DataOutput.SelectedIndex][2] + ";";
+                com.ExecuteNonQuery();
+                trans.Commit();
+                MenuItem_Click(sender, new RoutedEventArgs());
+            }
+        }
     }
 }

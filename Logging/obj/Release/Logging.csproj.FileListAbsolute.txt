@@ -3,3 +3,10 @@ C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Logging\bin\Release\Loggi
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Logging\obj\Release\Logging.csproj.CoreCompileInputs.cache
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Logging\obj\Release\Logging.dll
 C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Logging\obj\Release\Logging.pdb
+C:\Users\Friedrich May\Documents\GitHub\RaceManagement\Logging\obj\Release\Logging.csprojAssemblyReference.cache
+D:\Friedrich May\Documents\GitHub\RaceManagement\Logging\bin\Release\Logging.dll
+D:\Friedrich May\Documents\GitHub\RaceManagement\Logging\bin\Release\Logging.pdb
+D:\Friedrich May\Documents\GitHub\RaceManagement\Logging\obj\Release\Logging.csprojAssemblyReference.cache
+D:\Friedrich May\Documents\GitHub\RaceManagement\Logging\obj\Release\Logging.csproj.CoreCompileInputs.cache
+D:\Friedrich May\Documents\GitHub\RaceManagement\Logging\obj\Release\Logging.dll
+D:\Friedrich May\Documents\GitHub\RaceManagement\Logging\obj\Release\Logging.pdb

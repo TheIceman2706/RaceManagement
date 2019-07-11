@@ -62,19 +62,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>nTnai8qwg4gLafaLURHCu2uAFXVHZrssYbiI2gHvnrM=</dsig:DigestValue>
+        <dsig:DigestValue>wzuKsMkInigeF9f2A8H7kruCUZAC8Xr2N4PICFg3TEA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Strafrunden.exe" size="162752">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Strafrunden.exe" size="163320">
       <assemblyIdentity name="Strafrunden" version="1.5.14.1806" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>uGXSws5zJNGbi8zRxgbPd8y3zmVtyMCnLAXlciKmm2A=</dsig:DigestValue>
+        <dsig:DigestValue>A4fdN6fffg0hZuflJfaluas/Bx8x9CevBITFIZTkwOI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
