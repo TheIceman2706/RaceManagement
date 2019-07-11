@@ -31,3 +31,5 @@ D:\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\bin\Debug\DocumentF
 D:\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\Strafrunden.exe.manifest
 D:\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\Strafrunden.application
 D:\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\Strafrunden.csproj.CopyComplete
+D:\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\Transponder.g.cs
+D:\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\Transponder.baml

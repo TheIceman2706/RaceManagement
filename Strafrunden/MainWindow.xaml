@@ -45,11 +45,6 @@
             </MenuItem>
 
             <MenuItem Header="{x:Static p:strings.Settings}">
-                <MenuItem Header="RaceResult">
-                    <MenuItem Header="RaceResult-Link" IsCheckable="False" IsChecked="False"/>
-                    <MenuItem Header="RaceResult Server:"/>
-                    <TextBox Name="RaceResultServerText" Width="100px"/>
-                </MenuItem>
                 <MenuItem Header="{x:Static p:strings.ExcelExport}">
                     <MenuItem Header="{x:Static p:strings.ExportNow}" Click="MenuItem_Click_3"/>
                     <MenuItem Header="{x:Static p:strings.ExportRegular}" IsCheckable="True" IsChecked="False" Name="ExportExcel" Click="ExportExcel_Click" />

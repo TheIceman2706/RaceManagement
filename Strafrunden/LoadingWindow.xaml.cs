@@ -49,9 +49,11 @@ namespace Strafrunden
         {
             Progress.Value = 100;
             mw = new MainWindow(sql);
+            var tw = new Transponder(sql);
             mw.Closed += Mw_Closed;
             this.Close();
             mw.Show();
+            tw.Show();
         }
 
         private void Mw_Closed(object sender, EventArgs e)
@@ -166,7 +168,8 @@ namespace Strafrunden
             {
                 loader.ReportProgress(85, Properties.strings.SettingUpDatabase);
                 SqlCommand com = sql.CreateCommand();
-                com.CommandText = @"CREATE TABLE [dbo].[strafrunden] ([Id] INT IDENTITY (1, 1) NOT NULL,[startnummer] INT NOT NULL,[fehler]      INT NULL,PRIMARY KEY CLUSTERED ([Id] ASC));";
+                com.CommandText = @"CREATE TABLE [dbo].[strafrunden] ([Id] INT IDENTITY (1, 1) NOT NULL,[startnummer] INT NOT NULL,[fehler]      INT NULL,PRIMARY KEY CLUSTERED ([Id] ASC));
+CREATE TABLE [dbo].[registrations] ([Id] INT IDENTITY (1, 1) NOT NULL PRIMARY KEY, [startnummer] INT NOT NULL, [timestamp] DATETIME NULL);";
                 com.ExecuteNonQuery();
                 com.Dispose();
                 log.Info("Database set up!");

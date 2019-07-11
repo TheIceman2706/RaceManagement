@@ -33,6 +33,7 @@ namespace Strafrunden
         Log log = Log.Instance;
 
         private Server.HttpServer _server;
+        private TCPServer _tcp;
         private SqlConnection sql;
         private ObservableCollection<int[]> data;
         private string dataQuery = "SELECT startnummer, SUM(fehler) FROM strafrunden GROUP BY startnummer;";
@@ -46,6 +47,11 @@ namespace Strafrunden
             data = new ObservableCollection<int[]>();
             _server = new Server.HttpServer();
             _server.Start();
+
+            Strafrunden.Resources.TransponderLookup.Add("ABC-123", 12);
+
+            _tcp = new TCPServer(sql);
+            _tcp.Start();
             
 
             log.Info("registering Handlers...");
@@ -185,7 +191,7 @@ namespace Strafrunden
                 SqlTransaction trans = sql.BeginTransaction();
                 SqlCommand com = sql.CreateCommand();
                 com.Transaction = trans;
-                com.CommandText = "DELETE FROM strafrunden WHERE 1=1;";
+                com.CommandText = "DELETE FROM strafrunden WHERE 1=1;DELETE FROM registrations WHERE 1=1;";
                 com.ExecuteNonQuery();
                 trans.Commit();
             }
