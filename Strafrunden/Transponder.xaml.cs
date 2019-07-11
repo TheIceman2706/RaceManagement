@@ -87,7 +87,7 @@ namespace Strafrunden
                 {
                     while (rd.Read())
                     {
-                        if (rd.GetInt32(1) != 0)
+                        if (!rd.IsDBNull(1) &&rd.GetInt32(1) != 0)
                         {
                             if (rd.FieldCount <= 2)
                                 data2.Add(new int[] { rd.GetInt32(0), rd.GetInt32(1) });
