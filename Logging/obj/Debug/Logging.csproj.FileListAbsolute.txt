@@ -1,0 +1,6 @@
+D:\Friedrich May\Documents\GitHub\RaceManagement\Logging\bin\Debug\Logging.dll
+D:\Friedrich May\Documents\GitHub\RaceManagement\Logging\bin\Debug\Logging.pdb
+D:\Friedrich May\Documents\GitHub\RaceManagement\Logging\obj\Debug\Logging.csprojAssemblyReference.cache
+D:\Friedrich May\Documents\GitHub\RaceManagement\Logging\obj\Debug\Logging.csproj.CoreCompileInputs.cache
+D:\Friedrich May\Documents\GitHub\RaceManagement\Logging\obj\Debug\Logging.dll
+D:\Friedrich May\Documents\GitHub\RaceManagement\Logging\obj\Debug\Logging.pdb

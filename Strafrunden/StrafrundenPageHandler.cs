@@ -30,15 +30,13 @@ namespace Strafrunden
             {
                 if (startNr != 0)
                 {
-                    SqlTransaction trans = sql.BeginTransaction();
-                    SqlCommand com = sql.CreateCommand();
+                    using (SqlCommand com = sql.CreateCommand())
+                    {
 
-                    com.Transaction = trans;
+                        com.CommandText = String.Format("INSERT INTO strafrunden (startnummer,fehler) Output Inserted.id VALUES ({0},{1});", startNr, failed);
+                        retID = (int)com.ExecuteScalar();
+                    }
 
-                    com.CommandText = String.Format("INSERT INTO strafrunden (startnummer,fehler) Output Inserted.id VALUES ({0},{1});", startNr, failed);
-                    retID = (int)com.ExecuteScalar();
-
-                    trans.Commit();
                 }
             }
             catch

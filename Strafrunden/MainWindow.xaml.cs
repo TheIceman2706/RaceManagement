@@ -33,6 +33,7 @@ namespace Strafrunden
         Log log = Log.Instance;
 
         private Server.HttpServer _server;
+        private TCPServer _tcp;
         private SqlConnection sql;
         private ObservableCollection<int[]> data;
         private string dataQuery = "SELECT startnummer, SUM(fehler) FROM strafrunden GROUP BY startnummer;";
@@ -46,11 +47,18 @@ namespace Strafrunden
             data = new ObservableCollection<int[]>();
             _server = new Server.HttpServer();
             _server.Start();
+
+            if (Strafrunden.Resources.TransponderLookup.Sql == null)
+                Strafrunden.Resources.TransponderLookup.Sql = sql;
+
+            _tcp = new TCPServer(sql);
+            _tcp.Start();
             
 
             log.Info("registering Handlers...");
             Handlers.RegisterResourceHandler(new StrafrundenPageHandler(sql));
             Handlers.RegisterResourceHandler(new FileResourceHandler("/strafrunden/main.css", "strafrunden.css", "text/css"));
+            Handlers.RegisterResourceHandler(new FileResourceHandler("/strafrunden/favicon.ico", "favicon.ico", "image/x-icon"));
 
             log.Info("Creating timers...");
             timer = new Timer();
@@ -78,7 +86,7 @@ namespace Strafrunden
             log.Info("Main window closing...");
             _server.Stop();
             log.Info("Saving settings...");
-            Properties.Settings.Default.Save();
+            App.Current.Shutdown();
         }
 
         private void CombineFailsCheckbox_Checked(object sender, RoutedEventArgs e)
@@ -157,27 +165,32 @@ namespace Strafrunden
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            SqlTransaction trans = sql.BeginTransaction();
-            SqlCommand com = sql.CreateCommand();
-            com.Transaction = trans;
-            com.CommandText = dataQuery;
-            SqlDataReader rd = com.ExecuteReader();
-            data.Clear();
-            if (rd.HasRows)
+            try
             {
-                while (rd.Read())
+                using (SqlCommand com = sql.CreateCommand())
                 {
-                    if (rd.FieldCount <= 2)
-                        data.Add(new int[] { rd.GetInt32(0), rd.GetInt32(1) });
-                    else
-                        data.Add(new int[] { rd.GetInt32(0), rd.GetInt32(1), rd.GetInt32(2) });
+                    com.CommandText = dataQuery;
+                    SqlDataReader rd = com.ExecuteReader();
+                    data.Clear();
+                    if (rd.HasRows)
+                    {
+                        while (rd.Read())
+                        {
+                            if (rd.FieldCount <= 2)
+                                data.Add(new int[] { rd.GetInt32(0), rd.GetInt32(1) });
+                            else
+                                data.Add(new int[] { rd.GetInt32(0), rd.GetInt32(1), rd.GetInt32(2) });
+                        }
+                    }
+                    rd.Close();
                 }
-            }
-            rd.Close();
-           
-            trans.Commit();
 
-            LastUpdateStatus.Content = DateTime.Now.ToLongTimeString()+" ("+DateTime.Now.ToShortDateString()+")";
+                LastUpdateStatus.Content = DateTime.Now.ToLongTimeString() + " (" + DateTime.Now.ToShortDateString() + ")";
+            }
+            catch (Exception ex)
+            {
+                Logging.Log.Instance.Warn("[Fails-Window] [Exception] " + ex.ToString());
+            }
         }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
@@ -187,10 +200,11 @@ namespace Strafrunden
                 SqlTransaction trans = sql.BeginTransaction();
                 SqlCommand com = sql.CreateCommand();
                 com.Transaction = trans;
-                com.CommandText = "DELETE FROM strafrunden WHERE 1=1;";
+                com.CommandText = "DELETE FROM strafrunden WHERE 1=1;DELETE FROM registrations WHERE 1=1;";
                 com.ExecuteNonQuery();
                 trans.Commit();
             }
+            Logging.Log.Instance.Warn("All data cleared!");
         }
 
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
@@ -455,6 +469,20 @@ namespace Strafrunden
                 ExcelModeStatus.Content = Properties.strings.manual + (ExcelCombine.IsChecked ? ", " + Properties.strings.combined : ", " + Properties.strings.detailed);
             Properties.Settings.Default.CombineExcel = ExcelCombine.IsChecked;
              
+        }
+
+        private void DataOutput_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if(e.Key == Key.Delete && DataOutput.SelectedIndex >= 0 && !CombineFailsCheckbox.IsChecked)
+            {
+                SqlTransaction trans = sql.BeginTransaction();
+                SqlCommand com = sql.CreateCommand();
+                com.Transaction = trans;
+                com.CommandText = "DELETE FROM strafrunden WHERE Id=" + data[DataOutput.SelectedIndex][2] + ";";
+                com.ExecuteNonQuery();
+                trans.Commit();
+                MenuItem_Click(sender, new RoutedEventArgs());
+            }
         }
     }
 }

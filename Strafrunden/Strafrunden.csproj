@@ -32,7 +32,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>54</ApplicationRevision>
+    <ApplicationRevision>56</ApplicationRevision>
     <ApplicationVersion>1.3.38.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -60,7 +60,7 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>FC682A8700FB3C7D61CD6858258D966C63C4C85E</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>48A6D01B2490EB749B3BBE7792A1E02CF24F3B55</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>Strafrunden_TemporaryKey.pfx</ManifestKeyFile>
@@ -131,10 +131,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="COdes.xaml.cs">
+      <DependentUpon>COdes.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FileResourceHandler.cs" />
     <Compile Include="LoadingWindow.xaml.cs">
       <DependentUpon>LoadingWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MarkupExtensions\SettingsBinding.cs" />
     <Compile Include="Properties\strings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -145,12 +149,24 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>templates.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\TransponderLookup.cs" />
     <Compile Include="Server\Handlers.cs" />
     <Compile Include="Server\HttpHandler.cs" />
     <Compile Include="Server\HttpServer.cs" />
     <Compile Include="Server\Handler.cs" />
+    <Compile Include="Server\TCPServer.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="StrafrundenPageHandler.cs" />
+    <Compile Include="Transponder.xaml.cs">
+      <DependentUpon>Transponder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TransponderEntryDialog.xaml.cs">
+      <DependentUpon>TransponderEntryDialog.xaml</DependentUpon>
+    </Compile>
+    <Page Include="COdes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LoadingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -167,6 +183,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Transponder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TransponderEntryDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -211,10 +235,6 @@
     <Resource Include="Resources\icon-ConvertImage.ico" />
     <Content Include="strafrunden.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Strafrunden.mdf" />
-    <Content Include="Strafrunden_log.ldf">
-      <DependentUpon>Strafrunden.mdf</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>

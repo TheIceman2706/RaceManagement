@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:p="clr-namespace:Strafrunden.Properties"
         xmlns:local="clr-namespace:Strafrunden"
+        xmlns:set="clr-namespace:Strafrunden.MarkupExtensions"
         mc:Ignorable="d"
-        Title="{x:Static p:strings.Title}" Height="605.044" Width="758.848" Closing="Window_Closing" Loaded="Window_Loaded">
+        Title="{x:Static p:strings.Title}"  Height="{set:SettingBinding MainWindowHeight}" Width="{set:SettingBinding MainWindowWidth}" Top="{set:SettingBinding MainWindowTop}" Left="{set:SettingBinding MainWindowLeft}" Closing="Window_Closing" Loaded="Window_Loaded">
     <Grid>
-        <DataGrid Margin="0,18,0,20" Name="DataOutput" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" CellEditEnding="DataOutput_CellEditEnding" BeginningEdit="DataOutput_BeginningEdit">
+        <DataGrid Margin="0,18,0,20" Name="DataOutput" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" CellEditEnding="DataOutput_CellEditEnding" BeginningEdit="DataOutput_BeginningEdit" KeyUp="DataOutput_KeyUp">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="{x:Static p:strings.Starter}" Binding="{Binding [0]}" />
                 <DataGridTextColumn Header="{x:Static p:strings.Fails}" Binding="{Binding [1]}"/>
@@ -45,11 +46,6 @@
             </MenuItem>
 
             <MenuItem Header="{x:Static p:strings.Settings}">
-                <MenuItem Header="RaceResult">
-                    <MenuItem Header="RaceResult-Link" IsCheckable="False" IsChecked="False"/>
-                    <MenuItem Header="RaceResult Server:"/>
-                    <TextBox Name="RaceResultServerText" Width="100px"/>
-                </MenuItem>
                 <MenuItem Header="{x:Static p:strings.ExcelExport}">
                     <MenuItem Header="{x:Static p:strings.ExportNow}" Click="MenuItem_Click_3"/>
                     <MenuItem Header="{x:Static p:strings.ExportRegular}" IsCheckable="True" IsChecked="False" Name="ExportExcel" Click="ExportExcel_Click" />

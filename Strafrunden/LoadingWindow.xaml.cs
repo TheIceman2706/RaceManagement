@@ -43,13 +43,20 @@ namespace Strafrunden
             loader.RunWorkerCompleted += Loader_RunWorkerCompleted;
             InitializeComponent();
             SQLInstanceName = "MSSQLLocalDB";
+            App.Current.Exit += OnExit;
         }
 
         private void Loader_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             Progress.Value = 100;
             mw = new MainWindow(sql);
+            var tw = new Transponder(sql);
+            var cw = new COdes();
             mw.Closed += Mw_Closed;
+            Strafrunden.Resources.TransponderLookup.Sql = sql;
+            
+            tw.Show();
+            cw.Show();
             this.Close();
             mw.Show();
         }
@@ -75,6 +82,8 @@ namespace Strafrunden
 
         private void Loader_DoWork(object sender, DoWorkEventArgs e)
         {
+            
+
             loader.ReportProgress(1, Properties.strings.LoadingSettings);
             if (Strafrunden.Properties.Settings.Default.ApplicationVersion != System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString())
             {
@@ -101,6 +110,13 @@ namespace Strafrunden
 
 
             loader.ReportProgress(90, Properties.strings.CreatingMainWindow);
+        }
+
+        private void OnExit(object sender, ExitEventArgs e)
+        {
+
+            Properties.Settings.Default.Save();
+            log.SafeTo(DateTime.Now.ToString(@"yyyy_MM_dd_HH_mm_ss") + ".log");
         }
 
         private void LoadDatabase()
@@ -166,7 +182,9 @@ namespace Strafrunden
             {
                 loader.ReportProgress(85, Properties.strings.SettingUpDatabase);
                 SqlCommand com = sql.CreateCommand();
-                com.CommandText = @"CREATE TABLE [dbo].[strafrunden] ([Id] INT IDENTITY (1, 1) NOT NULL,[startnummer] INT NOT NULL,[fehler]      INT NULL,PRIMARY KEY CLUSTERED ([Id] ASC));";
+                com.CommandText = @"CREATE TABLE [dbo].[strafrunden] ([Id] INT IDENTITY (1, 1) NOT NULL,[startnummer] INT NOT NULL,[fehler] INT NULL,PRIMARY KEY CLUSTERED ([Id] ASC));"+
+                                  @"CREATE TABLE [dbo].[registrations] ([Id] INT IDENTITY (1, 1) NOT NULL PRIMARY KEY, [startnummer] INT NOT NULL, [timestamp] DATETIME NULL);"+
+                                  @"CREATE TABLE transponder ([code] nvarchar(64) not null primary key,[startnummer] int not null);";
                 com.ExecuteNonQuery();
                 com.Dispose();
                 log.Info("Database set up!");
