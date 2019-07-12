@@ -51,10 +51,14 @@ namespace Strafrunden
             Progress.Value = 100;
             mw = new MainWindow(sql);
             var tw = new Transponder(sql);
+            var cw = new COdes();
             mw.Closed += Mw_Closed;
+            Strafrunden.Resources.TransponderLookup.Sql = sql;
+            
+            tw.Show();
+            cw.Show();
             this.Close();
             mw.Show();
-            tw.Show();
         }
 
         private void Mw_Closed(object sender, EventArgs e)
@@ -178,8 +182,9 @@ namespace Strafrunden
             {
                 loader.ReportProgress(85, Properties.strings.SettingUpDatabase);
                 SqlCommand com = sql.CreateCommand();
-                com.CommandText = @"CREATE TABLE [dbo].[strafrunden] ([Id] INT IDENTITY (1, 1) NOT NULL,[startnummer] INT NOT NULL,[fehler]      INT NULL,PRIMARY KEY CLUSTERED ([Id] ASC));
-CREATE TABLE [dbo].[registrations] ([Id] INT IDENTITY (1, 1) NOT NULL PRIMARY KEY, [startnummer] INT NOT NULL, [timestamp] DATETIME NULL);";
+                com.CommandText = @"CREATE TABLE [dbo].[strafrunden] ([Id] INT IDENTITY (1, 1) NOT NULL,[startnummer] INT NOT NULL,[fehler] INT NULL,PRIMARY KEY CLUSTERED ([Id] ASC));"+
+                                  @"CREATE TABLE [dbo].[registrations] ([Id] INT IDENTITY (1, 1) NOT NULL PRIMARY KEY, [startnummer] INT NOT NULL, [timestamp] DATETIME NULL);"+
+                                  @"CREATE TABLE transponder ([code] nvarchar(64) not null primary key,[startnummer] int not null);";
                 com.ExecuteNonQuery();
                 com.Dispose();
                 log.Info("Database set up!");

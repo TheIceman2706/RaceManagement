@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:Strafrunden"
         xmlns:ext="clr-namespace:Strafrunden.MarkupExtensions"
         mc:Ignorable="d"
-        Title="Transponder" Height="450" Width="800">
+        Title="Transponder"  WindowStyle="ToolWindow"
+        Height="{ext:SettingBinding TransponderWindowHeight}" Width="{ext:SettingBinding TransponderWindowWidth}" Top="{ext:SettingBinding TransponderWindowTop}" Left="{ext:SettingBinding TransponderWindowLeft}">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -39,7 +40,7 @@
                 <DataGridTextColumn Header="Fehlende Strafrunden" Binding="{Binding [1]}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <StatusBar Grid.Row="2" Height="20" FontSize="10" VerticalAlignment="Bottom" >
+        <StatusBar Grid.Row="2" Grid.ColumnSpan="2" Height="20" FontSize="10" VerticalAlignment="Bottom" >
             <StatusBarItem Content="Letztes Update:" ></StatusBarItem>
             <StatusBarItem Name="LastUpdateStatus" ></StatusBarItem>
         </StatusBar>

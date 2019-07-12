@@ -48,7 +48,8 @@ namespace Strafrunden
             _server = new Server.HttpServer();
             _server.Start();
 
-            Strafrunden.Resources.TransponderLookup.Add("ABC-123", 12);
+            if (Strafrunden.Resources.TransponderLookup.Sql == null)
+                Strafrunden.Resources.TransponderLookup.Sql = sql;
 
             _tcp = new TCPServer(sql);
             _tcp.Start();
@@ -57,6 +58,7 @@ namespace Strafrunden
             log.Info("registering Handlers...");
             Handlers.RegisterResourceHandler(new StrafrundenPageHandler(sql));
             Handlers.RegisterResourceHandler(new FileResourceHandler("/strafrunden/main.css", "strafrunden.css", "text/css"));
+            Handlers.RegisterResourceHandler(new FileResourceHandler("/strafrunden/favicon.ico", "favicon.ico", "image/x-icon"));
 
             log.Info("Creating timers...");
             timer = new Timer();
@@ -187,7 +189,7 @@ namespace Strafrunden
             }
             catch (Exception ex)
             {
-                Logging.Log.Instance.Warn("[Fails-Window][Exception]" + ex.ToString());
+                Logging.Log.Instance.Warn("[Fails-Window] [Exception] " + ex.ToString());
             }
         }
 
@@ -202,6 +204,7 @@ namespace Strafrunden
                 com.ExecuteNonQuery();
                 trans.Commit();
             }
+            Logging.Log.Instance.Warn("All data cleared!");
         }
 
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)

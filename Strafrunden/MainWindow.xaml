@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:p="clr-namespace:Strafrunden.Properties"
         xmlns:local="clr-namespace:Strafrunden"
+        xmlns:set="clr-namespace:Strafrunden.MarkupExtensions"
         mc:Ignorable="d"
-        Title="{x:Static p:strings.Title}" Height="605.044" Width="758.848" Closing="Window_Closing" Loaded="Window_Loaded">
+        Title="{x:Static p:strings.Title}"  Height="{set:SettingBinding MainWindowHeight}" Width="{set:SettingBinding MainWindowWidth}" Top="{set:SettingBinding MainWindowTop}" Left="{set:SettingBinding MainWindowLeft}" Closing="Window_Closing" Loaded="Window_Loaded">
     <Grid>
         <DataGrid Margin="0,18,0,20" Name="DataOutput" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" CellEditEnding="DataOutput_CellEditEnding" BeginningEdit="DataOutput_BeginningEdit" KeyUp="DataOutput_KeyUp">
             <DataGrid.Columns>

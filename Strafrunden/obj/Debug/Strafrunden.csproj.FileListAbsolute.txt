@@ -34,3 +34,7 @@ D:\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\Strafrund
 D:\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\Transponder.g.cs
 D:\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\Transponder.baml
 D:\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\COdes.g.cs
+D:\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\TransponderEntryDialog.g.cs
+D:\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\COdes.baml
+D:\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\TransponderEntryDialog.baml

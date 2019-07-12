@@ -9,7 +9,5 @@
 //------------------------------------------------------------------------------
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("strafrunden.css")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("strafrunden.mdf")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("strafrunden_log.ldf")]
 
 

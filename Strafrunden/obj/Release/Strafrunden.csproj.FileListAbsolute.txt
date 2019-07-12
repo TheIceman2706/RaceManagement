@@ -60,3 +60,10 @@ D:\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\Strafru
 D:\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\Strafrunden.application
 D:\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\Strafrunden.csproj.CopyComplete
 D:\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\Strafrunden.exe
+D:\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\COdes.g.cs
+D:\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\Transponder.g.cs
+D:\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\TransponderEntryDialog.g.cs
+D:\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\GeneratedInternalTypeHelper.g.cs
+D:\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\COdes.baml
+D:\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\Transponder.baml
+D:\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Release\TransponderEntryDialog.baml
