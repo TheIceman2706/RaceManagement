@@ -61,45 +61,52 @@ namespace Strafrunden
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            using (SqlCommand com = sql.CreateCommand())
+            try
             {
-                com.CommandText = dataQuery;
-                SqlDataReader rd = com.ExecuteReader();
-                data.Clear();
-                if (rd.HasRows)
+                using (SqlCommand com = sql.CreateCommand())
                 {
-                    while (rd.Read())
+                    com.CommandText = dataQuery;
+                    SqlDataReader rd = com.ExecuteReader();
+                    data.Clear();
+                    if (rd.HasRows)
                     {
-                        if (rd.FieldCount <= 2)
-                            data.Add(new int[] { rd.GetInt32(0), rd.GetInt32(1) });
-                        else
-                            data.Add(new int[] { rd.GetInt32(0), rd.GetInt32(1), rd.GetInt32(2) });
-                    }
-                }
-                rd.Close();
-            }
-            using (SqlCommand com = sql.CreateCommand())
-            {
-                com.CommandText = data2Query;
-                SqlDataReader rd = com.ExecuteReader();
-                data2.Clear();
-                if (rd.HasRows)
-                {
-                    while (rd.Read())
-                    {
-                        if (!rd.IsDBNull(1) &&rd.GetInt32(1) != 0)
+                        while (rd.Read())
                         {
                             if (rd.FieldCount <= 2)
-                                data2.Add(new int[] { rd.GetInt32(0), rd.GetInt32(1) });
+                                data.Add(new int[] { rd.GetInt32(0), rd.GetInt32(1) });
                             else
-                                data2.Add(new int[] { rd.GetInt32(0), rd.GetInt32(1), rd.GetInt32(2) });
+                                data.Add(new int[] { rd.GetInt32(0), rd.GetInt32(1), rd.GetInt32(2) });
                         }
                     }
+                    rd.Close();
                 }
-                rd.Close();
-            }
+                using (SqlCommand com = sql.CreateCommand())
+                {
+                    com.CommandText = data2Query;
+                    SqlDataReader rd = com.ExecuteReader();
+                    data2.Clear();
+                    if (rd.HasRows)
+                    {
+                        while (rd.Read())
+                        {
+                            if (!rd.IsDBNull(1) && rd.GetInt32(1) != 0)
+                            {
+                                if (rd.FieldCount <= 2)
+                                    data2.Add(new int[] { rd.GetInt32(0), rd.GetInt32(1) });
+                                else
+                                    data2.Add(new int[] { rd.GetInt32(0), rd.GetInt32(1), rd.GetInt32(2) });
+                            }
+                        }
+                    }
+                    rd.Close();
+                }
 
-            LastUpdateStatus.Content = System.DateTime.Now.ToLongTimeString() +" " + System.DateTime.Now.ToShortDateString();
+                LastUpdateStatus.Content = System.DateTime.Now.ToLongTimeString() + " " + System.DateTime.Now.ToShortDateString();
+            }
+            catch(Exception ex)
+            {
+                Logging.Log.Instance.Warn("[Transponder-Window][Exception]" + ex.ToString());
+            }
 
         }
     }

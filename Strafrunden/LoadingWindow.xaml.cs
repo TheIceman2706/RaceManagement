@@ -43,6 +43,7 @@ namespace Strafrunden
             loader.RunWorkerCompleted += Loader_RunWorkerCompleted;
             InitializeComponent();
             SQLInstanceName = "MSSQLLocalDB";
+            App.Current.Exit += OnExit;
         }
 
         private void Loader_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -77,6 +78,8 @@ namespace Strafrunden
 
         private void Loader_DoWork(object sender, DoWorkEventArgs e)
         {
+            
+
             loader.ReportProgress(1, Properties.strings.LoadingSettings);
             if (Strafrunden.Properties.Settings.Default.ApplicationVersion != System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString())
             {
@@ -103,6 +106,13 @@ namespace Strafrunden
 
 
             loader.ReportProgress(90, Properties.strings.CreatingMainWindow);
+        }
+
+        private void OnExit(object sender, ExitEventArgs e)
+        {
+
+            Properties.Settings.Default.Save();
+            log.SafeTo(DateTime.Now.ToString(@"yyyy_MM_dd_HH_mm_ss") + ".log");
         }
 
         private void LoadDatabase()

@@ -33,3 +33,4 @@ D:\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\Strafrund
 D:\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\Strafrunden.csproj.CopyComplete
 D:\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\Transponder.g.cs
 D:\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\Transponder.baml
+D:\Friedrich May\Documents\GitHub\RaceManagement\Strafrunden\obj\Debug\GeneratedInternalTypeHelper.g.cs

@@ -33,6 +33,9 @@ namespace Strafrunden.Server
             string msg = state as string;
             Logging.Log.Instance.Info("[TCP]Message received:" + msg);
             string tc = msg.Split(';')[0];
+            string src = msg.Split(';')[3];
+            if (!System.Text.RegularExpressions.Regex.IsMatch(src, Properties.Settings.Default.RaceResultBoxNameFilter))
+                return;
             int stnr = Resources.TransponderLookup.Find(tc);
             if (stnr == 0)
                 return;

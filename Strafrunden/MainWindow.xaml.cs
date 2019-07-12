@@ -84,7 +84,7 @@ namespace Strafrunden
             log.Info("Main window closing...");
             _server.Stop();
             log.Info("Saving settings...");
-            Properties.Settings.Default.Save();
+            App.Current.Shutdown();
         }
 
         private void CombineFailsCheckbox_Checked(object sender, RoutedEventArgs e)
@@ -163,25 +163,32 @@ namespace Strafrunden
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            using (SqlCommand com = sql.CreateCommand())
+            try
             {
-                com.CommandText = dataQuery;
-                SqlDataReader rd = com.ExecuteReader();
-                data.Clear();
-                if (rd.HasRows)
+                using (SqlCommand com = sql.CreateCommand())
                 {
-                    while (rd.Read())
+                    com.CommandText = dataQuery;
+                    SqlDataReader rd = com.ExecuteReader();
+                    data.Clear();
+                    if (rd.HasRows)
                     {
-                        if (rd.FieldCount <= 2)
-                            data.Add(new int[] { rd.GetInt32(0), rd.GetInt32(1) });
-                        else
-                            data.Add(new int[] { rd.GetInt32(0), rd.GetInt32(1), rd.GetInt32(2) });
+                        while (rd.Read())
+                        {
+                            if (rd.FieldCount <= 2)
+                                data.Add(new int[] { rd.GetInt32(0), rd.GetInt32(1) });
+                            else
+                                data.Add(new int[] { rd.GetInt32(0), rd.GetInt32(1), rd.GetInt32(2) });
+                        }
                     }
+                    rd.Close();
                 }
-                rd.Close();
-            }
 
-            LastUpdateStatus.Content = DateTime.Now.ToLongTimeString()+" ("+DateTime.Now.ToShortDateString()+")";
+                LastUpdateStatus.Content = DateTime.Now.ToLongTimeString() + " (" + DateTime.Now.ToShortDateString() + ")";
+            }
+            catch (Exception ex)
+            {
+                Logging.Log.Instance.Warn("[Fails-Window][Exception]" + ex.ToString());
+            }
         }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)

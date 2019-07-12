@@ -56,19 +56,19 @@ namespace Logging
 
         public void Info(string msg)
         {
-            AppendWithTimestamp("[INFO]" + msg);
+            AppendWithTimestamp("[INFO] " + msg);
         }
         public void Warn(string msg)
         {
-            AppendWithTimestamp("[WARNING]" + msg);
+            AppendWithTimestamp("[WARNING] " + msg);
         }
         public void Error(string msg)
         {
-            AppendWithTimestamp("[ERROR]" + msg);
+            AppendWithTimestamp("[ERROR] " + msg);
         }
         public void Fail(string msg)
         {
-            AppendWithTimestamp("[FAILURE]" + msg);
+            AppendWithTimestamp("[FAILURE] " + msg);
         }
 
     }
