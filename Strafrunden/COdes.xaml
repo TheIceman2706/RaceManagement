@@ -29,6 +29,7 @@
                 <MenuItem Header="Einzeln" Name="RemoveMeuItem" Click="RemoveMeuItem_Click"/>
                 <MenuItem Header="Alle" Name="ClearMenuItem" Click="ClearMenuItem_Click"/>
             </MenuItem>
+            <MenuItem Header="TC=STNR" IsCheckable="True" IsChecked="True" Name="TCEquivMenuItem" Checked="TCEquivMenuItem_Checked" Unchecked="TCEquivMenuItem_Unchecked" />
         </Menu>
         <DataGrid Grid.Column="0" Grid.Row="1" Name="DataOutput" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True"  >
             <DataGrid.Columns>

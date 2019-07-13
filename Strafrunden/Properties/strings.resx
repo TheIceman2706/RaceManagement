@@ -183,7 +183,11 @@
     <value>Version:{0}
 (c) Friedrich May
 
-Der Server ist erreichbar unter den folgenden IP-Adressen:{1}</value>
+Der Server ist erreichbar unter den folgenden IP-Adressen:{1}
+
+Raceresult Exporter:
+TCP auf Port 6525 (benötigt möglicherweise Firewalleinstellung)
+Format:[tc|startnummer];1;timestamp;source/gesamtstrafrunden (ignored)</value>
     <comment>{0}:Assembly Version
 {1}:IP Adresses</comment>
   </data>

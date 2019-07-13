@@ -42,7 +42,8 @@ namespace Strafrunden.Server
             using (SqlCommand com = sql.CreateCommand())
             {
 
-                com.CommandText = String.Format("INSERT INTO registrations (startnummer,timestamp) Output Inserted.id VALUES ({0},'{1}');", stnr, msg.Split(';')[2].Replace("-","."));
+                com.CommandText = String.Format("INSERT INTO registrations (startnummer,timestamp) Output Inserted.id VALUES ({0},@dt);", stnr);
+                com.Parameters.Add(new SqlParameter("@dt", System.DateTime.Parse(msg.Split(';')[2].Replace("-", "."), System.Globalization.CultureInfo.CreateSpecificCulture("de-DE"))));
                 com.ExecuteScalar();
             }
         }

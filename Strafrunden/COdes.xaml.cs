@@ -95,5 +95,15 @@ namespace Strafrunden
 
             MenuItem_Click(sender, e);
         }
+
+        private void TCEquivMenuItem_Checked(object sender, RoutedEventArgs e)
+        {
+            Strafrunden.Resources.TransponderLookup.UseIdentity = true;
+        }
+
+        private void TCEquivMenuItem_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Strafrunden.Resources.TransponderLookup.UseIdentity = false;
+        }
     }
 }

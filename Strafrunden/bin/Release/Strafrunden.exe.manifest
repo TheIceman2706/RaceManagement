@@ -67,14 +67,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Strafrunden.exe" size="185848">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Strafrunden.exe" size="186872">
       <assemblyIdentity name="Strafrunden" version="1.5.14.1806" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>A4eQsqqWrtgg6arvnx27yDYVhie9RXhjiidCZN5Oko4=</dsig:DigestValue>
+        <dsig:DigestValue>kcSNG/fNw7NaDddZDEnj2stT1i5MTP5whsrO8TiV3Oc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

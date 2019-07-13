@@ -10,9 +10,12 @@ namespace Strafrunden.Resources
 {
     public static class TransponderLookup
     {
+        public static bool UseIdentity = true;
         public static SqlConnection Sql;
         public static int Find(string tc)
         {
+            if (UseIdentity)
+                return int.Parse(tc);
             try
             {
                 using (var com = Sql.CreateCommand())

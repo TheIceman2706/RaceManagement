@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="Strafrunden.exe" version="1.3.38.55" publicKeyToken="0000000000000000" language="de" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="Strafrunden.exe" version="1.3.38.56" publicKeyToken="0000000000000000" language="de" processorArchitecture="msil" type="win32" />
   <description asmv2:iconFile="Resources\icon-ConvertImage.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
@@ -67,14 +67,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Strafrunden.exe" size="180728">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Strafrunden.exe" size="184824">
       <assemblyIdentity name="Strafrunden" version="1.5.14.1806" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>M5i0iQL3ZNotUZqDKoHEK3bFpyLahfjHHb/6CTJ/pkg=</dsig:DigestValue>
+        <dsig:DigestValue>qGk37ipIeJcBHlmuSodmbS6jj5dJ7wnBlzitsBsSpzg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -120,13 +120,13 @@
       <dsig:DigestValue>TZi9Yw9QFn5Pabd03smUwFSmZS9pPdC1owREii/uH40=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Strafrunden.exe.config" size="2385">
+  <file name="Strafrunden.exe.config" size="3932">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>Iv4aTkRIwWIsytBtwNLed8Uiw4eREFUnZoGqtuZ0A7g=</dsig:DigestValue>
+      <dsig:DigestValue>c6iUPuuS4kDt7OtbLG8PGG86QWj9zSAYOMngoNn1tlQ=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">

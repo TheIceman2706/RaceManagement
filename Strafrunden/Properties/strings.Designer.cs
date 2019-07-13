@@ -245,7 +245,11 @@ namespace Strafrunden.Properties {
         ///   Sucht eine lokalisierte Zeichenfolge, die Version:{0}
         ///(c) Friedrich May
         ///
-        ///Der Server ist erreichbar unter den folgenden IP-Adressen:{1} ähnelt.
+        ///Der Server ist erreichbar unter den folgenden IP-Adressen:{1}
+        ///
+        ///Raceresult Exporter:
+        ///TCP auf Port 6525 (benötigt möglicherweise Firewalleinstellung)
+        ///Format:[tc|startnummer];1;timestamp;source/gesamtstrafrunden (ignored) ähnelt.
         /// </summary>
         public static string HelpFormat {
             get {

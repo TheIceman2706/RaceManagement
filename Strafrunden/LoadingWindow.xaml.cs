@@ -44,6 +44,13 @@ namespace Strafrunden
             InitializeComponent();
             SQLInstanceName = "MSSQLLocalDB";
             App.Current.Exit += OnExit;
+            App.Current.DispatcherUnhandledException += Current_DispatcherUnhandledException;
+        }
+
+        private void Current_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+        {
+            log.Fail(e.Exception.ToString());
+            App.Current.Shutdown();
         }
 
         private void Loader_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
